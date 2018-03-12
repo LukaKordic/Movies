@@ -7,13 +7,15 @@ import com.bumptech.glide.Glide
 import com.example.lkord.movies.dataobjects.Movie
 import kotlinx.android.synthetic.main.movie_item_layout.view.*
 
-class MovieHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MovieResponseHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun setMovieData(movie: Movie) {
         with(itemView) {
             Glide.with(this).load(Uri.parse(movie.poster)).into(moviePoster)
             movieTitle.text = movie.title
-            movieDescription.text = movie.description
+            movieYear.text = movie.year.toString()
+            movieRuntime.text = movie.runtime.toString()
+            movieGenre.text = movie.genre
         }
     }
 }

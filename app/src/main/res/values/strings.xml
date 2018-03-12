@@ -5,4 +5,5 @@
     <string name="search">Search</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
+    <string name="search_hint">Search movies</string>
 </resources>
