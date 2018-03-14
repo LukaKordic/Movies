@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface OMDBService {
 
     @GET("?apikey=$OMDB_API_KEY")
-    fun searchMoviesByTitle(@Query("t") title: String): Call<List<Movie>>
+    fun searchMoviesByTitle(@Query("t") title: String?): Call<Movie>
 
     @GET("?apikey=$OMDB_API_KEY")
     fun getTopMovies(): Call<List<Movie>>

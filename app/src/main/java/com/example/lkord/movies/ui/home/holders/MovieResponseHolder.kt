@@ -9,13 +9,13 @@ import kotlinx.android.synthetic.main.movie_item_layout.view.*
 
 class MovieResponseHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun setMovieData(movie: Movie) {
+    fun setMovieData(movie: Movie?) {
         with(itemView) {
-            Glide.with(this).load(Uri.parse(movie.poster)).into(moviePoster)
-            movieTitle.text = movie.title
-            movieYear.text = movie.year.toString()
-            movieRuntime.text = movie.runtime.toString()
-            movieGenre.text = movie.genre
+            movie?.poster.let { Glide.with(this).load(Uri.parse(movie?.poster)).into(moviePoster) }
+            movieTitle.text = movie?.title
+            movieYear.text = movie?.year.toString()
+            movieRuntime.text = movie?.runtime.toString()
+            movieGenre.text = movie?.genre
         }
     }
 }

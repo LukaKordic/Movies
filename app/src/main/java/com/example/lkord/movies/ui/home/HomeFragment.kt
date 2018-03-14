@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.lkord.movies.R
 import com.example.lkord.movies.dataobjects.Movie
-import com.example.lkord.movies.ui.home.adapters.RecyclerAdapter
+import com.example.lkord.movies.ui.home.adapters.HomeRecyclerAdapter
 import kotlinx.android.synthetic.main.home_fragment_layout.*
 
 class HomeFragment : Fragment() {
@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
 
     private fun initializeRecycler() {
         with(homeRecycler) {
-            adapter = RecyclerAdapter(ArrayList<Movie>())
+            adapter = HomeRecyclerAdapter(ArrayList<Movie>())
             layoutManager = LinearLayoutManager(activity)
         }
     }
