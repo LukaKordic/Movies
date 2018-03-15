@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Movies</string>
-    <string name="home">Home</string>
     <string name="favourites">Favourites</string>
-    <string name="search">Search</string>
-    <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="search_hint">Search movies</string>
+    <string name="search_failed">Search request failed</string>
+    <string name="movie_banner">Movie Banner</string>
+    <string name="year_label">Year: </string>
 </resources>

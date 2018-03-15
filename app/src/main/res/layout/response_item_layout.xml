@@ -8,9 +8,10 @@
     <ImageView
         android:id="@+id/moviePoster"
         android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription,RtlHardcoded" />
@@ -44,7 +45,7 @@
         tools:text="Year" />
 
     <TextView
-        android:id="@+id/movieRuntime"
+        android:id="@+id/movieType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -55,19 +56,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movieYear"
         tools:ignore="RtlSymmetry"
-        tools:text="Runtime" />
+        tools:text="Type" />
 
-    <TextView
-        android:id="@+id/movieGenre"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:paddingStart="10dp"
-        app:layout_constraintLeft_toRightOf="@id/moviePoster"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movieRuntime"
-        tools:ignore="RtlSymmetry"
-        tools:text="Genre" />
 </android.support.constraint.ConstraintLayout>
