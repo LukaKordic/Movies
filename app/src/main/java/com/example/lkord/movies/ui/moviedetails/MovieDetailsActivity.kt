@@ -45,14 +45,16 @@ class MovieDetailsActivity : AppCompatActivity(), Callback<Movie> {
 
     private fun updateUI(movie: Movie?) {
         movie?.let {
-            it.poster?.let {
-                Glide.with(this)
-                    .load(Uri.parse(it))
-                    .into(detailsBanner)
-            }
+            Glide.with(this).load(Uri.parse(it.poster)).into(detailsBanner)
             detailsTitle.text = it.title
             detailsYear.text = it.year
-            it.imdbRating?.let { rating.rating = it.toFloat() * 0.5F }
+            rating.rating = it.imdbRating.toFloat() * 0.5F
+            ratingText.text = it.imdbRating
+            director.text = it.director
+            runtime.text = it.runtime
+            plot.text = it.plot
+            stars.text = it.actors
+            genre.text = it.genre
         }
     }
 

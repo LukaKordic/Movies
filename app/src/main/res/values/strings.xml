@@ -6,4 +6,6 @@
     <string name="search_failed">Search request failed</string>
     <string name="movie_banner">Movie Banner</string>
     <string name="year_label">Year: </string>
+    <string name="stars">Stars: </string>
+    <string name="director">Director: </string>
 </resources>

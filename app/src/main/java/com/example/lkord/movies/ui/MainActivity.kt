@@ -26,25 +26,27 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        val transaction = fragmentManager.beginTransaction()
-        when (item.itemId) {
-            R.id.navigation_home -> {
-                transaction.replace(R.id.container, homeFragment).commit()
-                return@OnNavigationItemSelectedListener true
+    private val mOnNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            val transaction = fragmentManager.beginTransaction()
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    transaction.replace(R.id.container, homeFragment).commit()
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_favourites -> {
+                    transaction.replace(R.id.container, favouritesFragment).commit()
+                    return@OnNavigationItemSelectedListener true
+                }
             }
-            R.id.navigation_favourites -> {
-                transaction.replace(R.id.container, favouritesFragment).commit()
-                return@OnNavigationItemSelectedListener true
-            }
+            false
         }
-        false
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu?.findItem(R.id.app_bar_search)?.actionView as android.widget.SearchView
+        val searchView =
+            menu?.findItem(R.id.app_bar_search)?.actionView as android.widget.SearchView
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
 
         return true
