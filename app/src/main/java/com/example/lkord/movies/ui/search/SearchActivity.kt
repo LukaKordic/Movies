@@ -9,8 +9,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
-import com.example.lkord.movies.dataobjects.SearchResponse
-import com.example.lkord.movies.networking.OMDBService
+import com.example.lkord.movies.repository.dataobjects.SearchResponse
+import com.example.lkord.movies.repository.networking.OMDBService
 import com.example.lkord.movies.ui.moviedetails.MovieDetailsActivity
 import com.example.lkord.movies.ui.search.adapters.SearchRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_search.*
@@ -19,7 +19,7 @@ import retrofit2.Callback
 
 class SearchActivity : AppCompatActivity(), Callback<SearchResponse> {
 
-    private val retrofit = App.getRetrofitInstance()
+    private val retrofit = App.retrofitInstance
     private val omdbService = retrofit.create(OMDBService::class.java)
     private lateinit var recAdapter: SearchRecyclerAdapter
 
@@ -46,12 +46,11 @@ class SearchActivity : AppCompatActivity(), Callback<SearchResponse> {
         Toast.makeText(this, getString(R.string.search_failed), Toast.LENGTH_SHORT).show()
     }
 
-    override fun onResponse(
-        call: Call<SearchResponse>?,
-        searchResponse: retrofit2.Response<SearchResponse>?
-    ) {
-        recAdapter = SearchRecyclerAdapter(searchResponse?.body()?.movies) {
-            startActivity(MovieDetailsActivity.getLaunchIntent(this, it?.title))
+    override fun onResponse(call: Call<SearchResponse>?, searchResponse: retrofit2.Response<SearchResponse>) {
+        searchResponse.body()?.let {
+            recAdapter = SearchRecyclerAdapter(it.movies) {
+                startActivity(MovieDetailsActivity.getLaunchIntent(this, it.title))
+            }
         }
         initializeUI(recAdapter)
     }

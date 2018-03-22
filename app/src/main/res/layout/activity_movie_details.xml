@@ -45,6 +45,7 @@
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/detailsBanner"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/detailsYear"
         tools:ignore="RtlHardcoded" />
 
     <TextView
@@ -57,6 +58,7 @@
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/yearLabel"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         tools:ignore="RtlHardcoded"
         tools:text="2017" />
 
@@ -73,6 +75,7 @@
         android:stepSize="0.1"
         app:layout_constraintLeft_toRightOf="@id/detailsBanner"
         app:layout_constraintTop_toBottomOf="@id/yearLabel"
+        app:layout_constraintRight_toLeftOf="@+id/ratingText"
         tools:ignore="RtlHardcoded" />
 
     <TextView
@@ -86,6 +89,7 @@
         app:layout_constraintBottom_toBottomOf="@id/rating"
         app:layout_constraintLeft_toRightOf="@id/rating"
         app:layout_constraintTop_toTopOf="@id/rating"
+        app:layout_constraintRight_toRightOf="parent"
         tools:text="10/10" />
 
     <TextView
@@ -119,19 +123,21 @@
         android:id="@+id/director_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/director"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/detailsBanner"
-        app:layout_constraintTop_toBottomOf="@id/genre" />
+        app:layout_constraintTop_toBottomOf="@id/genre"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/director"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/director_label"
@@ -148,30 +154,29 @@
         android:text="@string/stars"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintLeft_toRightOf="@id/detailsBanner"
-        app:layout_constraintTop_toBottomOf="@id/director" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailsTitle" />
 
     <TextView
         android:id="@+id/stars"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintLeft_toRightOf="@id/detailsBanner"
+        app:layout_constraintLeft_toRightOf="@id/stars_label"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/stars_label"
+        app:layout_constraintTop_toTopOf="@id/stars_label"
         tools:ignore="RtlHardcoded"
         tools:text="Jason" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/detailsTitle">
+        app:layout_constraintTop_toBottomOf="@id/stars">
 
         <TextView
             android:id="@+id/plot"

@@ -10,8 +10,8 @@ import com.bumptech.glide.Glide
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
 import com.example.lkord.movies.common.DETAILS_KEY
-import com.example.lkord.movies.dataobjects.Movie
-import com.example.lkord.movies.networking.OMDBService
+import com.example.lkord.movies.repository.dataobjects.Movie
+import com.example.lkord.movies.repository.networking.OMDBService
 import kotlinx.android.synthetic.main.activity_movie_details.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,7 +19,7 @@ import retrofit2.Response
 
 class MovieDetailsActivity : AppCompatActivity(), Callback<Movie> {
 
-    private val retrofit = App.getRetrofitInstance()
+    private val retrofit = App.retrofitInstance
     private val omdbService = retrofit.create(OMDBService::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
