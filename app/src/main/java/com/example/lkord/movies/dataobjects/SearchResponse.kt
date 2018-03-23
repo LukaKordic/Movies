@@ -1,4 +1,4 @@
-package com.example.lkord.movies.repository.dataobjects
+package com.example.lkord.movies.dataobjects
 
 import com.google.gson.annotations.SerializedName
 

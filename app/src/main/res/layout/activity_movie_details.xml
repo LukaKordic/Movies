@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/detailsBanner"
@@ -25,7 +24,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -41,11 +40,11 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/year_label"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/detailsBanner"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/detailsYear"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlHardcoded" />
 
     <TextView
@@ -54,11 +53,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/yearLabel"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlHardcoded"
         tools:text="2017" />
 
@@ -74,8 +73,8 @@
         android:rating="0.0"
         android:stepSize="0.1"
         app:layout_constraintLeft_toRightOf="@id/detailsBanner"
-        app:layout_constraintTop_toBottomOf="@id/yearLabel"
         app:layout_constraintRight_toLeftOf="@+id/ratingText"
+        app:layout_constraintTop_toBottomOf="@id/yearLabel"
         tools:ignore="RtlHardcoded" />
 
     <TextView
@@ -84,12 +83,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/rating"
         app:layout_constraintLeft_toRightOf="@id/rating"
-        app:layout_constraintTop_toTopOf="@id/rating"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rating"
         tools:text="10/10" />
 
     <TextView
@@ -98,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/detailsBanner"
         app:layout_constraintRight_toRightOf="parent"
@@ -112,7 +111,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/detailsBanner"
         app:layout_constraintRight_toRightOf="parent"
@@ -126,7 +125,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/director"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/detailsBanner"
         app:layout_constraintTop_toBottomOf="@id/genre"
@@ -138,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/director_label"
         app:layout_constraintRight_toRightOf="parent"
@@ -152,7 +151,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/stars"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/detailsTitle" />
@@ -163,7 +162,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="16dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/stars_label"
         app:layout_constraintRight_toRightOf="parent"
@@ -185,7 +184,7 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
     </ScrollView>

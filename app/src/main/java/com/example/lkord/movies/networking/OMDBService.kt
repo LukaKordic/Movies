@@ -1,8 +1,8 @@
-package com.example.lkord.movies.repository.networking
+package com.example.lkord.movies.networking
 
 import com.example.lkord.movies.common.OMDB_API_KEY
-import com.example.lkord.movies.repository.dataobjects.Movie
-import com.example.lkord.movies.repository.dataobjects.SearchResponse
+import com.example.lkord.movies.dataobjects.Movie
+import com.example.lkord.movies.dataobjects.SearchResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

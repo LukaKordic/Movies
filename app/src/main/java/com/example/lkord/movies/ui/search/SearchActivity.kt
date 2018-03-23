@@ -9,8 +9,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
-import com.example.lkord.movies.repository.dataobjects.SearchResponse
-import com.example.lkord.movies.repository.networking.OMDBService
+import com.example.lkord.movies.dataobjects.SearchResponse
+import com.example.lkord.movies.networking.OMDBService
 import com.example.lkord.movies.ui.moviedetails.MovieDetailsActivity
 import com.example.lkord.movies.ui.search.adapters.SearchRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_search.*
