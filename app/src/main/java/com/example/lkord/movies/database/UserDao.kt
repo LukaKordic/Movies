@@ -1,9 +1,9 @@
-package com.example.lkord.movies.db
+package com.example.lkord.movies.database
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
-import com.example.lkord.movies.dataobjects.Movie
+import com.example.lkord.movies.model.data.Movie
 
 @Dao
 interface MovieDao {

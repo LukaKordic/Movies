@@ -7,10 +7,9 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
-import com.example.lkord.movies.App
 import com.example.lkord.movies.R
-import com.example.lkord.movies.dataobjects.SearchResponse
-import com.example.lkord.movies.networking.OMDBService
+import com.example.lkord.movies.model.network.SearchResponse
+import com.example.lkord.movies.searchPresenter
 import com.example.lkord.movies.ui.moviedetails.MovieDetailsActivity
 import com.example.lkord.movies.ui.search.adapters.SearchRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_search.*
@@ -19,9 +18,9 @@ import retrofit2.Callback
 
 class SearchActivity : AppCompatActivity(), Callback<SearchResponse> {
 
-    private val retrofit = App.retrofitInstance
-    private val omdbService = retrofit.create(OMDBService::class.java)
     private lateinit var recAdapter: SearchRecyclerAdapter
+
+    private val betterPresenter by lazy { searchPresenter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +32,7 @@ class SearchActivity : AppCompatActivity(), Callback<SearchResponse> {
     private fun doSearch(searchIntent: Intent) {
         if (searchIntent.action == Intent.ACTION_SEARCH) {
             val searchQuery = searchIntent.getStringExtra(SearchManager.QUERY)
-            omdbService.searchMoviesByTitle(searchQuery).enqueue(this)
+//            omdbService.searchMoviesByTitle(searchQuery).enqueue(this)
         }
     }
 

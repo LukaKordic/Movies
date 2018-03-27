@@ -5,25 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.lkord.movies.R
-import com.example.lkord.movies.dataobjects.Movie
+import com.example.lkord.movies.model.data.Movie
 import com.example.lkord.movies.ui.search.holders.SearchResponseHolder
 
 class SearchRecyclerAdapter(
-        private val movieList: List<Movie>?,
         private val onItemClick: (Movie) -> Unit
 ) : RecyclerView.Adapter<SearchResponseHolder>() {
 
+    private val movies = mutableListOf<Movie>()
+
+    fun addMovies(data: List<Movie>) {
+        movies.clear()
+        movies.addAll(data)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResponseHolder {
-        val view: View =
-                LayoutInflater.from(parent.context).inflate(R.layout.response_item_layout, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.response_item_layout, parent, false)
         return SearchResponseHolder(view, onItemClick)
     }
 
     override fun onBindViewHolder(responseHolder: SearchResponseHolder, position: Int) {
-        responseHolder.setMovieData(movieList?.get(position))
+        responseHolder.setMovieData(movies[position])
     }
 
-    override fun getItemCount(): Int {
-        return movieList?.size ?: 0
-    }
+    override fun getItemCount() = movies.size
 }

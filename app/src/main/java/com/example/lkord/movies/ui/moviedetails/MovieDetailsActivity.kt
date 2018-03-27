@@ -9,9 +9,10 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
+import com.example.lkord.movies.api.MovieApiService
 import com.example.lkord.movies.common.DETAILS_KEY
-import com.example.lkord.movies.dataobjects.Movie
-import com.example.lkord.movies.networking.OMDBService
+import com.example.lkord.movies.common.onClick
+import com.example.lkord.movies.model.data.Movie
 import kotlinx.android.synthetic.main.activity_movie_details.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,17 +21,18 @@ import retrofit2.Response
 class MovieDetailsActivity : AppCompatActivity(), Callback<Movie> {
 
     private val retrofit = App.retrofitInstance
-    private val omdbService = retrofit.create(OMDBService::class.java)
+    private val omdbService = retrofit.create(MovieApiService::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
 
         val title = intent.getStringExtra(DETAILS_KEY)
-        doSearch(title)
+        searchMovies(title)
     }
 
-    private fun doSearch(searchQuery: String) {
+    //todo presenter
+    private fun searchMovies(searchQuery: String) {
         omdbService.detailedSearchByTitle(searchQuery).enqueue(this)
     }
 
@@ -40,25 +42,29 @@ class MovieDetailsActivity : AppCompatActivity(), Callback<Movie> {
     }
 
     override fun onResponse(call: Call<Movie>?, response: Response<Movie>?) {
-        updateUI(response?.body())
+        response?.body()?.run { updateUI(this) }
     }
 
-    private fun updateUI(movie: Movie?) {
-        movie?.let {
-            Glide.with(this).load(Uri.parse(it.poster)).into(detailsBanner)
-            detailsTitle.text = it.title
-            detailsYear.text = it.year
-            rating.rating = it.imdbRating.toFloat() * 0.5F
-            ratingText.text = it.imdbRating
-            director.text = it.director
-            runtime.text = it.runtime
-            plot.text = it.plot
-            stars.text = it.actors
-            genre.text = it.genre
-        }
+    private fun updateUI(movie: Movie) {
+        Glide.with(this@MovieDetailsActivity).load(Uri.parse(poster)).into(detailsBanner)
+        detailsTitle.text = title
+        detailsYear.text = movie.year
+        rating.rating = imdbRating.toFloat() * 0.5F
+        ratingText.text = imdbRating
+        director.text = director
+        runtime.text = runtime
+        plot.text = plot
+        stars.text = actors
+        genre.text = genre
+
+
+        genre.onClick { }
     }
 
     companion object {
+        private const val DETAILS_KEY = "details"
+        const val REQUEST_CODE_DETAILS = 5
+
         fun getLaunchIntent(from: Context, movieTitle: String?): Intent {
             val intent = Intent(from, MovieDetailsActivity::class.java)
             intent.putExtra(DETAILS_KEY, movieTitle)

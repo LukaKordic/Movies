@@ -9,6 +9,8 @@ import android.view.Menu
 import com.example.lkord.movies.R
 import com.example.lkord.movies.ui.favourites.FavouritesFragment
 import com.example.lkord.movies.ui.home.HomeFragment
+import com.example.lkord.movies.ui.listener.SimpleNavigationListener
+import com.example.lkord.movies.ui.listener.onItemTapped
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,31 +25,52 @@ class MainActivity : AppCompatActivity() {
 
         fragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit()
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation.onItemTapped {
+            when (it) {
+                R.id.navigation_home -> {
+
+                }
+
+                R.id.navigation_favourites -> {
+
+                }
+            }
+        }
+
+        navigation.setOnNavigationItemSelectedListener(SimpleNavigationListener {
+            when (it) {
+                R.id.navigation_home -> {
+
+                }
+
+                R.id.navigation_favourites -> {
+
+                }
+            }
+        })
     }
 
     private val mOnNavigationItemSelectedListener =
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            val transaction = fragmentManager.beginTransaction()
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    transaction.replace(R.id.container, homeFragment).commit()
-                    return@OnNavigationItemSelectedListener true
+            BottomNavigationView.OnNavigationItemSelectedListener { item ->
+                val transaction = fragmentManager.beginTransaction()
+                when (item.itemId) {
+                    R.id.navigation_home -> {
+                        transaction.replace(R.id.container, homeFragment).commit()
+                        return@OnNavigationItemSelectedListener true
+                    }
+                    R.id.navigation_favourites -> {
+                        transaction.replace(R.id.container, favouritesFragment).commit()
+                        return@OnNavigationItemSelectedListener true
+                    }
                 }
-                R.id.navigation_favourites -> {
-                    transaction.replace(R.id.container, favouritesFragment).commit()
-                    return@OnNavigationItemSelectedListener true
-                }
+                false
             }
-            false
-        }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView =
-            menu?.findItem(R.id.app_bar_search)?.actionView as android.widget.SearchView
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as? SearchManager
+        val searchView = menu?.findItem(R.id.app_bar_search)?.actionView as? android.widget.SearchView
+        searchView?.setSearchableInfo(searchManager?.getSearchableInfo(componentName))
 
         return true
     }
