@@ -1,14 +1,10 @@
 package com.example.lkord.movies.model.data
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity
 data class Movie(
-        @PrimaryKey(autoGenerate = true) val uid: Int,
-        @ColumnInfo(name = "imdb_rating") val imdbRating: String,
+        val uid: Int,
+        val imdbRating: String,
         @SerializedName("Title") val title: String,
         @SerializedName("Year") val year: String,
         @SerializedName("Runtime") val runtime: String,

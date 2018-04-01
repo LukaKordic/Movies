@@ -1,4 +1,4 @@
-package com.example.lkord.movies.common
+package com.example.lkord.movies.common.extensions
 
 import android.net.Uri
 import android.view.View
@@ -8,10 +8,6 @@ import com.bumptech.glide.Glide
 
 inline fun View.onClick(crossinline onClick: () -> Unit) {
     setOnClickListener { onClick() }
-}
-
-inline fun CheckBox.onCheckChanged(crossinline onClick: (Boolean) -> Unit){
-    setOnCheckedChangeListener { buttonView, isChecked -> onClick(isChecked) }
 }
 
 fun View.loadImage(view: View, poster: String, imageView: ImageView) {

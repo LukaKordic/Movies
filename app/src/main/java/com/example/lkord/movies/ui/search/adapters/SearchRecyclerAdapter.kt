@@ -8,9 +8,7 @@ import com.example.lkord.movies.R
 import com.example.lkord.movies.model.data.Movie
 import com.example.lkord.movies.ui.search.holders.SearchResponseHolder
 
-class SearchRecyclerAdapter(
-        private val onItemClick: (Movie) -> Unit
-) : RecyclerView.Adapter<SearchResponseHolder>() {
+class SearchRecyclerAdapter(private val onItemClick: (Movie) -> Unit) : RecyclerView.Adapter<SearchResponseHolder>() {
 
     private val movies = mutableListOf<Movie>()
 

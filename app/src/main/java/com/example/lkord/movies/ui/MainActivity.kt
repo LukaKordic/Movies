@@ -3,14 +3,12 @@ package com.example.lkord.movies.ui
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import com.example.lkord.movies.R
+import com.example.lkord.movies.common.extensions.onItemTapped
 import com.example.lkord.movies.ui.favourites.FavouritesFragment
 import com.example.lkord.movies.ui.home.HomeFragment
-import com.example.lkord.movies.ui.listener.SimpleNavigationListener
-import com.example.lkord.movies.ui.listener.onItemTapped
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,43 +26,15 @@ class MainActivity : AppCompatActivity() {
         navigation.onItemTapped {
             when (it) {
                 R.id.navigation_home -> {
-
+                    fragmentManager.beginTransaction().replace(R.id.container, homeFragment).commit()
                 }
 
                 R.id.navigation_favourites -> {
-
+                    fragmentManager.beginTransaction().replace(R.id.container, favouritesFragment).commit()
                 }
             }
         }
-
-        navigation.setOnNavigationItemSelectedListener(SimpleNavigationListener {
-            when (it) {
-                R.id.navigation_home -> {
-
-                }
-
-                R.id.navigation_favourites -> {
-
-                }
-            }
-        })
     }
-
-    private val mOnNavigationItemSelectedListener =
-            BottomNavigationView.OnNavigationItemSelectedListener { item ->
-                val transaction = fragmentManager.beginTransaction()
-                when (item.itemId) {
-                    R.id.navigation_home -> {
-                        transaction.replace(R.id.container, homeFragment).commit()
-                        return@OnNavigationItemSelectedListener true
-                    }
-                    R.id.navigation_favourites -> {
-                        transaction.replace(R.id.container, favouritesFragment).commit()
-                        return@OnNavigationItemSelectedListener true
-                    }
-                }
-                false
-            }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
