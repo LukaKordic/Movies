@@ -23,7 +23,7 @@
 
             <meta-data
                 android:name="android.app.default_searchable"
-                android:value=".ui.search.SearchActivity" />
+                android:value=".ui.search.view.SearchActivity" />
         </activity>
         <activity
             android:name=".ui.search.view.SearchActivity"
@@ -39,8 +39,7 @@
         </activity>
         <activity
             android:name=".ui.moviedetails.MovieDetailsActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".ui.search.view.SearchActivity"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -11,11 +11,11 @@ private const val OMDB_API_KEY = "31e475bb"
 
 interface MovieApiService {
 
-    @GET("")
+    @GET(".")
     fun searchMoviesByTitle(@Query("apiKey") apiKey: String = OMDB_API_KEY, @Query("s") title: String): Call<SearchResponse>
 
-    @GET("?apikey=$OMDB_API_KEY")
-    fun detailedSearchByTitle(@Query("t") title: String): Call<Movie>
+    @GET(".")
+    fun detailedSearchByTitle(@Query("apiKey") apiKey: String = OMDB_API_KEY, @Query("t") title: String): Call<Movie>
 
     @GET("?apikey=$OMDB_API_KEY")
     fun getTopMovies(): Call<List<Movie>>

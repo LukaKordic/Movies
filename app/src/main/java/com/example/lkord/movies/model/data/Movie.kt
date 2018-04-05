@@ -3,7 +3,6 @@ package com.example.lkord.movies.model.data
 import com.google.gson.annotations.SerializedName
 
 data class Movie(
-        val uid: Int,
         val imdbRating: String,
         @SerializedName("Title") val title: String,
         @SerializedName("Year") val year: String,
