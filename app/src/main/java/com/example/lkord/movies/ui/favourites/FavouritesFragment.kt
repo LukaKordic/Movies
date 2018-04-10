@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.lkord.movies.R
+import com.example.lkord.movies.firebaseDatabase
 
 class FavouritesFragment : Fragment() {
+
+    private val firebaseDatabase by lazy { firebaseDatabase() }
 
     companion object {
         fun newInstance() = FavouritesFragment()
@@ -19,6 +22,7 @@ class FavouritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
     }
 }

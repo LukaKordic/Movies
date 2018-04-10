@@ -27,7 +27,7 @@ class SearchActivity : AppCompatActivity() {
             searchQuery = intent.getStringExtra(SearchManager.QUERY)
             searchPresenter.loadMovies(searchQuery) {
                 recAdapter = SearchRecyclerAdapter { startActivity(MovieDetailsActivity.getLaunchIntent(this, it.title)) }
-                recAdapter.addMovies(it)
+                recAdapter.addMovies(it ?: arrayListOf())
                 initUI()
             }
         }

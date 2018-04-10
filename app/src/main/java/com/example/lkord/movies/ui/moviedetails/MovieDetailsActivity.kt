@@ -5,6 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuInflater
 import com.bumptech.glide.Glide
 import com.example.lkord.movies.R
 import com.example.lkord.movies.detailsPresenter
@@ -39,12 +41,17 @@ class MovieDetailsActivity : AppCompatActivity() {
         Glide.with(this@MovieDetailsActivity).load(Uri.parse(movie.poster)).into(detailsBanner)
         detailsTitle.text = movie.title
         detailsYear.text = movie.year
-        rating.rating = movie.imdbRating.toFloat() * 0.5F
+        if (movie.imdbRating != "N/A") rating.rating = movie.imdbRating.toFloat() * 0.5F
         ratingText.text = movie.imdbRating
         director.text = movie.director
         runtime.text = movie.runtime
         plot.text = movie.plot
         stars.text = movie.actors
         genre.text = movie.genre
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.favorite_menu, menu)
+        return true
     }
 }

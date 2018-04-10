@@ -12,8 +12,9 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class MoviesInteractor @Inject constructor(private val moviesApi: MovieApiService) : MoviesInteractorInterface {
-    override fun getMovies(searchQuery: String?, onResult: (List<Movie>) -> Unit) {
-        moviesApi.searchMoviesByTitle(title = searchQuery ?: "").enqueue(object : Callback<SearchResponse> {
+    override fun getMovies(searchQuery: String?, onResult: (List<Movie>?) -> Unit) {
+        moviesApi.searchMoviesByTitle(title = searchQuery
+                ?: "").enqueue(object : Callback<SearchResponse> {
             override fun onFailure(call: Call<SearchResponse>?, t: Throwable?) {
                 t?.printStackTrace()
                 Toast.makeText(App.instance, R.string.search_failed, Toast.LENGTH_SHORT).show()

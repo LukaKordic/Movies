@@ -6,7 +6,9 @@ import javax.inject.Inject
 
 class SearchPresenter @Inject constructor(private val interactor: MoviesInteractorInterface) : SearchPresenterInterface {
 
-    override fun loadMovies(searchQuery: String, onResult: (List<Movie>) -> Unit) {
+    override fun loadMovies(searchQuery: String, onResult: (List<Movie>?) -> Unit) {
         interactor.getMovies(searchQuery, onResult)
     }
+
+
 }

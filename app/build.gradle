@@ -36,7 +36,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     //firebase
-    implementation "com.google.gms:google-services:${rootProject.ext.googleServicesVersion}"
+//    implementation "com.google.gms:google-services:${rootProject.ext.googleServicesVersion}"
     implementation "com.google.firebase:firebase-database:${rootProject.ext.firebaseVersion}"
 
     //support libs
@@ -53,6 +53,7 @@ dependencies {
 
     //networking
     implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
 
     //image loading
     implementation "com.github.bumptech.glide:glide:${rootProject.ext.glideVersion}"
@@ -66,3 +67,6 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:${rootProject.ext.daggerVersion}"
 }
 
+
+
+apply plugin: 'com.google.gms.google-services'

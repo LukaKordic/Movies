@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
+import android.widget.Toast
 import com.example.lkord.movies.R
 import com.example.lkord.movies.common.extensions.onItemTapped
 import com.example.lkord.movies.ui.favourites.FavouritesFragment
