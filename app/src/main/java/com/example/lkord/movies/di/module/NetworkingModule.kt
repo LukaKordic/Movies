@@ -1,5 +1,6 @@
 package com.example.lkord.movies.di.module
 
+import com.example.lkord.movies.BASE_URL
 import com.example.lkord.movies.api.MovieApiService
 import dagger.Module
 import dagger.Provides
@@ -8,8 +9,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
-
-private const val BASE_URL = "http://www.omdbapi.com/"
 
 @Module
 @Singleton
