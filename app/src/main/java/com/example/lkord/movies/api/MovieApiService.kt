@@ -6,7 +6,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-
 private const val OMDB_API_KEY = "31e475bb"
 
 interface MovieApiService {
