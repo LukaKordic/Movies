@@ -10,4 +10,5 @@
     <string name="director">Director: </string>
     <string name="save_to_favourites">Save to favourites</string>
     <string name="add_to_favorites">Add To Favorites</string>
+    <string name="child_movies">movies</string>
 </resources>

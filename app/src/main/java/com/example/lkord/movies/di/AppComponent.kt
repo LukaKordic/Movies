@@ -4,6 +4,7 @@ import com.example.lkord.movies.App
 import com.example.lkord.movies.di.module.DatabaseModule
 import com.example.lkord.movies.di.module.PresentationModule
 import com.example.lkord.movies.presentation.DetailsPresenterInterface
+import com.example.lkord.movies.presentation.FavoritesPresenterInterface
 import com.example.lkord.movies.presentation.SearchPresenterInterface
 import com.google.firebase.database.FirebaseDatabase
 import dagger.Component
@@ -20,4 +21,6 @@ interface AppComponent {
     fun detailsPresenter(): DetailsPresenterInterface
 
     fun firebaseDatabase(): FirebaseDatabase
+
+    fun favoritesPresenter(): FavoritesPresenterInterface
 }

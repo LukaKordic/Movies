@@ -3,8 +3,6 @@ package com.example.lkord.movies
 import android.app.Application
 import com.example.lkord.movies.di.AppComponent
 import com.example.lkord.movies.di.DaggerAppComponent
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class App : Application() {
 
@@ -13,7 +11,14 @@ class App : Application() {
         lateinit var instance: App
             private set
 
-        val component: AppComponent by lazy { DaggerAppComponent.builder().build()
+        val component: AppComponent by lazy {
+            DaggerAppComponent.builder().build()
         }
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+
+        instance = this
     }
 }

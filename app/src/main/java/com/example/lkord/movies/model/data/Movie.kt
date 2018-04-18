@@ -13,4 +13,6 @@ data class Movie(
         @SerializedName("Plot") val plot: String,
         @SerializedName("Poster") val poster: String,
         @SerializedName("Type") val type: String
-)
+) {
+    constructor() : this("", "", "", "", "", "", "", "", "", "")
+}

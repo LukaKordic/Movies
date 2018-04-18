@@ -1,9 +1,6 @@
 package com.example.lkord.movies.di.module
 
-import com.example.lkord.movies.interaction.DetailsInteractor
-import com.example.lkord.movies.interaction.DetailsInteractorInterface
-import com.example.lkord.movies.interaction.MoviesInteractor
-import com.example.lkord.movies.interaction.MoviesInteractorInterface
+import com.example.lkord.movies.interaction.*
 import dagger.Binds
 import dagger.Module
 
@@ -15,4 +12,7 @@ abstract class InteractionModule {
 
     @Binds
     abstract fun detailsInteractor(detailsInteractor: DetailsInteractor): DetailsInteractorInterface
+
+    @Binds
+    abstract fun favoritesInteractor(favoritesInteractor: FavoritesInteractor): FavoritesInteractorInterface
 }
