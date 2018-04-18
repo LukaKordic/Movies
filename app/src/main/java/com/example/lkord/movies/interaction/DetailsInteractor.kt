@@ -14,7 +14,7 @@ import javax.inject.Inject
 class DetailsInteractor @Inject constructor(private val moviesApi: MovieApiService, private val firebase: FirebaseDatabase) : DetailsInteractorInterface {
 
     override fun saveMovieToDatabase(movie: Movie) {
-        firebase.reference.child("movies"). setValue(movie)
+        firebase.reference.child("movies").push().setValue(movie)
     }
 
     override fun getMovieWithDetails(searchQuery: String?, onResult: (Movie) -> Unit) {
