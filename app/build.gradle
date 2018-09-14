@@ -32,10 +32,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "org.jetbrains.kotlin:kotlin-reflect:1.2.31"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.2.70"
 
     //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //firebase
 //    implementation "com.google.gms:google-services:${rootProject.ext.googleServicesVersion}"
@@ -55,7 +55,7 @@ dependencies {
 
     //networking
     implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 
     //image loading
     implementation "com.github.bumptech.glide:glide:${rootProject.ext.glideVersion}"

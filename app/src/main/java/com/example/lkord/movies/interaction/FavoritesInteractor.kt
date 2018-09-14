@@ -17,20 +17,16 @@ class FavoritesInteractor @Inject constructor(private val firebaseDatabase: Fire
 
     override fun getFavoriteMovies() {
         firebaseDatabase.reference.addValueEventListener(object : ValueEventListener {
-
-            override fun onCancelled(error: DatabaseError?) {
-
+            override fun onCancelled(error: DatabaseError) {
             }
 
-            override fun onDataChange(snaphsot: DataSnapshot?) {
-
-                snaphsot?.child(App.instance.resources.getString(R.string.child_movies))?.children?.run {
+            override fun onDataChange(snapshot: DataSnapshot) {
+               snapshot.child(App.instance.resources.getString(R.string.child_movies)).children.run {
                     for (child in this) {
                         val movie = child?.getValue(Movie::class.java)
                         Log.d(TAG, movie?.title)
                     }
                 }
-
             }
 
         })
