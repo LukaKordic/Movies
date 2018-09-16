@@ -1,6 +1,6 @@
-package com.example.lkord.movies.di.module
+package com.example.lkord.movies.di.modules
 
-import com.example.lkord.movies.api.MovieApiService
+import com.example.lkord.movies.network.MovieAPI
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -37,5 +37,5 @@ class NetworkingModule {
             }.build()
 
     @Provides
-    fun apiService(retrofit: Retrofit): MovieApiService = retrofit.create(MovieApiService::class.java)
+    fun apiService(retrofit: Retrofit): MovieAPI = retrofit.create(MovieAPI::class.java)
 }
