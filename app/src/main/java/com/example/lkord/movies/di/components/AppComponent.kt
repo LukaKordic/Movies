@@ -1,13 +1,16 @@
 package com.example.lkord.movies.di.components
 
 import com.example.lkord.movies.MovieApp
+import com.example.lkord.movies.di.modules.ActivityBuilder
 import com.example.lkord.movies.di.modules.AppModule
 import com.example.lkord.movies.di.modules.ViewModelBuilder
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
+import javax.inject.Singleton
 
-@Component(modules = [AppModule::class, AndroidSupportInjectionModule::class, ViewModelBuilder::class])
+@Singleton
+@Component(modules = [AppModule::class, AndroidSupportInjectionModule::class, ViewModelBuilder::class, ActivityBuilder::class])
 interface AppComponent : AndroidInjector<MovieApp> {
 
     @Component.Builder

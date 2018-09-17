@@ -5,12 +5,10 @@ import com.example.lkord.movies.ui.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@ActivityScope
 @Module
 internal abstract class ActivityBuilder {
 
-
     @ActivityScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector()
     internal abstract fun bindMainActivity(): MainActivity
 }
