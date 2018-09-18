@@ -16,11 +16,16 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled = true
     }
     buildTypes {
+        debug {
+            buildConfigField 'String', "ApiKey", tmdbApiKey
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "ApiKey", tmdbApiKey
         }
     }
 
@@ -80,6 +85,10 @@ dependencies {
 
     //rx
     implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxVersion}"
+    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
+    //logging
+    implementation "com.jakewharton.timber:timber:${rootProject.ext.timberVersion}"
 }
 
 apply plugin: 'com.google.gms.google-services'
