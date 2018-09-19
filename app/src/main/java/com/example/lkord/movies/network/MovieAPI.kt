@@ -1,7 +1,7 @@
 package com.example.lkord.movies.network
 
 import com.example.lkord.movies.BuildConfig
-import com.example.lkord.movies.model.data.Movie
+import com.example.lkord.movies.model.responses.MovieResponse
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
@@ -12,5 +12,5 @@ private const val API_KEY: String = BuildConfig.ApiKey
 interface MovieAPI {
 
     @GET("movie/now_playing")
-    fun getNowPlayingMovies(@Query("api_key") apiKey: String = API_KEY): Single<Response<List<Movie>>>
+    fun getNowPlayingMovies(@Query("api_key") apiKey: String = API_KEY): Single<Response<MovieResponse>>
 }

@@ -3,7 +3,7 @@ package com.example.lkord.movies.viewModels
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import com.example.lkord.movies.model.data.Movie
+import com.example.lkord.movies.db.entities.Movie
 import com.example.lkord.movies.repositories.MovieRepository
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.CompositeDisposable
@@ -19,19 +19,6 @@ class MainViewModel @Inject constructor(private val movieRepository: MovieReposi
         get() = movieLiveDataPrivate
 
     fun getNowPlayingMovies() {
-        movieRepository.getNowPlayingMovies().subscribeWith(object : SingleObserver<List<Movie>> {
-            override fun onSuccess(movies: List<Movie>) {
-                movieLiveDataPrivate.value = movies
-            }
-
-            override fun onSubscribe(d: Disposable) {
-                compositeDisposable.add(d)
-            }
-
-            override fun onError(e: Throwable) {
-
-            }
-        })
     }
 
     override fun onCleared() {

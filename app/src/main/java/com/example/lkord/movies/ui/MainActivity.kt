@@ -1,11 +1,15 @@
 package com.example.lkord.movies.ui
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.view.View
 import com.example.lkord.movies.R
+import com.example.lkord.movies.common.extensions.getViewModel
+import com.example.lkord.movies.common.extensions.toast
 import com.example.lkord.movies.viewModels.MainViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,7 +21,7 @@ class MainActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel by lazy { ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java) }
+    private val viewModel by lazy { getViewModel<MainViewModel>(viewModelFactory) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -42,11 +42,6 @@ dependencies {
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    //firebase
-//    implementation "com.google.gms:google-services:${rootProject.ext.googleServicesVersion}"
-    implementation "com.google.firebase:firebase-database:${rootProject.ext.firebaseVersion}"
-//    impelementation "com.google.firebase:firebase-core:${rootProject.ext.firebaseVersion}"
-
     //support libs
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
     implementation "com.android.support:support-v4:${rootProject.ext.supportVersion}"
@@ -82,6 +77,10 @@ dependencies {
     //live data
     implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
     kapt "android.arch.lifecycle:compiler:$lifecycleVersion"
+
+    //room
+    implementation "android.arch.persistence.room:runtime:${rootProject.ext.roomVersion}"
+    kapt "android.arch.persistence.room:compiler:${rootProject.ext.roomVersion}"
 
     //rx
     implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxVersion}"

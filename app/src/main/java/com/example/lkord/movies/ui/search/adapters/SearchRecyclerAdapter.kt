@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.lkord.movies.R
-import com.example.lkord.movies.model.data.Movie
+import com.example.lkord.movies.db.entities.Movie
 import com.example.lkord.movies.ui.search.holders.SearchResponseHolder
 
 class SearchRecyclerAdapter(private val onItemClick: (Movie) -> Unit) : RecyclerView.Adapter<SearchResponseHolder>() {

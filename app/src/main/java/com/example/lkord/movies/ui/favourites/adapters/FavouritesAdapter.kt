@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.lkord.movies.R
-import com.example.lkord.movies.model.data.Movie
+import com.example.lkord.movies.db.entities.Movie
 import com.example.lkord.movies.ui.favourites.holders.FavoriteMovieHolder
 
 class FavouritesAdapter : RecyclerView.Adapter<FavoriteMovieHolder>() {
