@@ -27,7 +27,7 @@
                 android:value=".ui.search.view.SearchActivity" />
         </activity>
         <activity
-            android:name=".ui.search.view.SearchActivity"
+            android:name=".ui.nowPlaying.view.SearchActivity"
             android:parentActivityName=".ui.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>

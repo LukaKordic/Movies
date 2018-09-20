@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.lkord.movies.R
-import com.example.lkord.movies.db.entities.Movie
+import com.example.lkord.movies.data.db.entities.Movie
 import com.example.lkord.movies.ui.favourites.holders.FavoriteMovieHolder
 
 class FavouritesAdapter : RecyclerView.Adapter<FavoriteMovieHolder>() {
@@ -18,7 +18,7 @@ class FavouritesAdapter : RecyclerView.Adapter<FavoriteMovieHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteMovieHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.response_item_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.now_playing_item, parent, false)
         return FavoriteMovieHolder(view)
 
     }

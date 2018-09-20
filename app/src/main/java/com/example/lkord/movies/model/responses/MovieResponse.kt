@@ -1,5 +1,6 @@
 package com.example.lkord.movies.model.responses
 
-import com.example.lkord.movies.db.entities.Movie
+import com.example.lkord.movies.data.db.entities.Movie
+import com.google.gson.annotations.SerializedName
 
-data class MovieResponse(val results: List<Movie>)
+data class MovieResponse(@SerializedName("results") val movies: List<Movie>)

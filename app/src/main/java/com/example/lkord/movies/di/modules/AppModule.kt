@@ -12,11 +12,11 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Module
-@Singleton
+@Module(includes = [NetworkingModule::class, DatabaseModule::class])
 class AppModule {
 
     @Provides
+    @Singleton
     fun provideApplicationContext(application: MovieApp): Context = application.applicationContext
 
     @Singleton

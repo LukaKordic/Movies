@@ -1,6 +1,7 @@
-package com.example.lkord.movies.network
+package com.example.lkord.movies.data.network.services
 
 import com.example.lkord.movies.model.responses.MovieResponse
+import com.example.lkord.movies.data.network.MovieAPI
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton

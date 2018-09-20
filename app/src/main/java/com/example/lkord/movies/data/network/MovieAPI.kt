@@ -1,4 +1,4 @@
-package com.example.lkord.movies.network
+package com.example.lkord.movies.data.network
 
 import com.example.lkord.movies.BuildConfig
 import com.example.lkord.movies.model.responses.MovieResponse
