@@ -1,10 +1,11 @@
 package com.example.lkord.movies.repositories
 
-import com.example.lkord.movies.common.SCHEDULERS_IO
-import com.example.lkord.movies.common.SCHEDULERS_MAIN
 import com.example.lkord.movies.data.LocalStorageImpl
 import com.example.lkord.movies.data.db.entities.Movie
 import com.example.lkord.movies.data.network.services.MovieApiService
+import com.example.lkord.movies.model.responses.MovieResponse
+import com.example.lkord.movies.util.SCHEDULERS_IO
+import com.example.lkord.movies.util.SCHEDULERS_MAIN
 import io.reactivex.Flowable
 import io.reactivex.Scheduler
 import io.reactivex.Single
@@ -18,11 +19,13 @@ class MovieRepository @Inject constructor(private val movieApiService: MovieApiS
                                           @Named(SCHEDULERS_IO) private val ioScheduler: Scheduler,
                                           @Named(SCHEDULERS_MAIN) private val mainScheduler: Scheduler) {
 
-    fun getNowPlayingMovies(): Single<List<Movie>> {
+    fun getNowPlayingMovies(): Flowable<List<Movie>> {
         return movieApiService.getNowPlayingMovies()
-                .flatMap {
-                    Single.just(it.movies)
+                .doOnSuccess {
+                    storage.saveMoviesToDatabase(it.movies)
                 }
+                .onErrorResumeNext { Single.just(MovieResponse(emptyList())) }
+                .flatMapPublisher { storage.retrieveMoviesFromDatabase() }
                 .subscribeOn(ioScheduler)
                 .observeOn(mainScheduler)
     }

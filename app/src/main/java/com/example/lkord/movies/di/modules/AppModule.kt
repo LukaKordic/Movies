@@ -2,8 +2,8 @@ package com.example.lkord.movies.di.modules
 
 import android.content.Context
 import com.example.lkord.movies.MovieApp
-import com.example.lkord.movies.common.SCHEDULERS_IO
-import com.example.lkord.movies.common.SCHEDULERS_MAIN
+import com.example.lkord.movies.util.SCHEDULERS_IO
+import com.example.lkord.movies.util.SCHEDULERS_MAIN
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler

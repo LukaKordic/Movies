@@ -1,21 +1,16 @@
 package com.example.lkord.movies.ui
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.example.lkord.movies.R
-import com.example.lkord.movies.common.extensions.getViewModel
-import com.example.lkord.movies.common.extensions.toast
+import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.ui.nowPlaying.adapters.NowPlayingAdapter
 import com.example.lkord.movies.viewModels.MainViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() {

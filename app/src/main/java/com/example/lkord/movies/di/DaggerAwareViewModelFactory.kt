@@ -2,7 +2,7 @@ package com.example.lkord.movies.di
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.example.lkord.movies.common.UNKNOWN_VIEWMODEL_CLASS
+import com.example.lkord.movies.util.UNKNOWN_VIEWMODEL_CLASS
 import javax.inject.Inject
 import javax.inject.Provider
 
