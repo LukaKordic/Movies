@@ -18,4 +18,14 @@ class MovieApiService @Inject constructor(private val movieApi: MovieAPI) {
             }
         }
     }
+
+    fun getPopularMovies(): Single<MovieResponse> {
+        return movieApi.getPopularMovies().flatMap {
+            if (it.isSuccessful) {
+                Single.just(it.body())
+            } else {
+                Single.error(Throwable(it.message()))
+            }
+        }
+    }
 }

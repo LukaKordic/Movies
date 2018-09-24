@@ -4,41 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    tools:context="com.example.lkord.movies.ui.MainActivity">
+    tools:context="com.example.lkord.movies.ui.home.HomeActivity">
 
-    <EditText
-        android:id="@+id/searchQuery"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/searchBarHeight"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_background"
-        android:drawableStart="@drawable/ic_search_24dp"
-        android:hint="@string/search"
-        android:padding="4dp"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:visibility="gone"
+    <include
+        layout="@layout/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/movieRecyclerView"
+    <View
+        android:id="@+id/toolbarShadow"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:background="@drawable/shadow_gradient"
+        app:layout_constraintBottom_toTopOf="@id/container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:ignore="UnknownIdInLayout" />
+
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchQuery"
-        tools:listitem="@layout/now_playing_item"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:ignore="UnknownIdInLayout" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
-        android:layout_height="@dimen/toolbar_height"
-        android:background="@color/bottomNavColor"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        app:itemIconTint="@color/colorAccent"
+        app:itemTextColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

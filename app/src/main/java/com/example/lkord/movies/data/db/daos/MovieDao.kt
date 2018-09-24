@@ -14,6 +14,6 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveMovies(movies: List<Movie>)
 
-    @Query("SELECT * FROM $MOVIE_TABLE")
-    fun fetchMovies(): Flowable<List<Movie>>
+    @Query("SELECT * FROM $MOVIE_TABLE WHERE movieType = :movieType")
+    fun fetchMoviesWithType(movieType: String): Flowable<List<Movie>>
 }

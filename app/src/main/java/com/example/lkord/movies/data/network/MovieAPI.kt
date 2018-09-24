@@ -13,4 +13,7 @@ interface MovieAPI {
 
     @GET("movie/now_playing")
     fun getNowPlayingMovies(@Query("api_key") apiKey: String = API_KEY): Single<Response<MovieResponse>>
+
+    @GET("movie/popular")
+    fun getPopularMovies(@Query("api_key") apiKey: String = API_KEY): Single<Response<MovieResponse>>
 }

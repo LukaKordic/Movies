@@ -18,7 +18,7 @@ class FavouritesAdapter : RecyclerView.Adapter<FavoriteMovieHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteMovieHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.now_playing_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
         return FavoriteMovieHolder(view)
 
     }

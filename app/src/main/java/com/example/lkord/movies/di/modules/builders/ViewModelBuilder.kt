@@ -1,10 +1,11 @@
-package com.example.lkord.movies.di.modules
+package com.example.lkord.movies.di.modules.builders
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.example.lkord.movies.di.DaggerAwareViewModelFactory
 import com.example.lkord.movies.di.ViewModelKey
-import com.example.lkord.movies.viewModels.MainViewModel
+import com.example.lkord.movies.viewModels.NowPlayingViewModel
+import com.example.lkord.movies.viewModels.PopularViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -17,6 +18,12 @@ internal abstract class ViewModelBuilder {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    internal abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+    @ViewModelKey(NowPlayingViewModel::class)
+    internal abstract fun bindMainViewModel(viewModel: NowPlayingViewModel): ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PopularViewModel::class)
+    internal abstract fun bindPopularViewModel(viewModel: PopularViewModel): ViewModel
 }

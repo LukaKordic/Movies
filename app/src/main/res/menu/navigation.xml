@@ -7,9 +7,9 @@
         android:title="@string/now_playing"/>
 
     <item
-        android:id="@+id/navigationSearch"
-        android:icon="@drawable/ic_search_24dp"
-        android:title="@string/search" />
+        android:id="@+id/navigationPopular"
+        android:title="@string/popular"
+        android:icon="@drawable/ic_popular_24dp"/>
 
     <item
         android:id="@+id/navigationFavourites"

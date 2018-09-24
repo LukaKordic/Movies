@@ -10,5 +10,7 @@ inline fun View.onClick(crossinline onClick: () -> Unit) {
 }
 
 fun ImageView.loadThumbnail(poster: String) {
-    Glide.with(this).load(IMAGE_BASE_URL + poster).into(this)
+    Glide.with(this)
+            .load(IMAGE_BASE_URL + poster)
+            .into(this)
 }

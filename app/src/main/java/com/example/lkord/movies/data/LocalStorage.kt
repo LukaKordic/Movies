@@ -5,7 +5,7 @@ import io.reactivex.Flowable
 
 interface LocalStorage {
 
-    fun saveMoviesToDatabase(movies: List<Movie>)
+    fun storeMovies(movies: List<Movie>)
 
-    fun retrieveMoviesFromDatabase(): Flowable<List<Movie>>
+    fun retrieveMoviesWithType(type: String): Flowable<List<Movie>>
 }

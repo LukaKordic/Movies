@@ -6,8 +6,11 @@ import com.example.lkord.movies.util.MOVIE_TABLE
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = MOVIE_TABLE)
-data class Movie(@PrimaryKey val id: Int,
+data class Movie(@PrimaryKey
+                 val id: Int,
                  val title: String,
                  @SerializedName("poster_path")
                  val posterPath: String,
-                 @SerializedName("release_date") val releaseDate: String)
+                 @SerializedName("release_date")
+                 val releaseDate: String,
+                 var movieType: String)//now playing, popular or favourite movieType
