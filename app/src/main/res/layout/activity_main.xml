@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.example.lkord.movies.ui.home.HomeActivity">
 
     <include
@@ -18,7 +19,6 @@
         android:layout_width="0dp"
         android:layout_height="10dp"
         android:background="@drawable/shadow_gradient"
-        app:layout_constraintBottom_toTopOf="@id/container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarShadow"
         tools:ignore="UnknownIdInLayout" />
 
     <android.support.design.widget.BottomNavigationView

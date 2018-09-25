@@ -1,79 +1,48 @@
-//package com.example.lkord.movies.ui.moviedetails
-//
-//import android.content.Context
-//import android.content.Intent
-//import android.net.Uri
-//import android.os.Bundle
-//import android.support.v7.app.AppCompatActivity
-//import android.support.v7.app.AppCompatDelegate
-//import android.view.Menu
-//import android.view.MenuItem
-//import android.widget.Toast
-//import com.bumptech.glide.Glide
-//import com.example.lkord.movies.R
-//import com.example.lkord.movies.model.data.Movie
-//
-//class MovieDetailsActivity : AppCompatActivity() {
-//
-//    private var isChecked = false
-//    private lateinit var movie: Movie
-//
-//    companion object {
-//        private const val DETAILS_KEY = "details"
-//
-//        fun getLaunchIntent(from: Context, movieTitle: String?): Intent {
-//            val intent = Intent(from, MovieDetailsActivity::class.java)
-//            intent.putExtra(DETAILS_KEY, movieTitle)
-//            return intent
-//        }
-//    }
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_movie_details)
-//
-//        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-//
-//        val title = intent.getStringExtra(DETAILS_KEY)
-//        }
-//    }
-//
-//    private fun updateUI(movie: Movie) {
-//        Glide.with(this@MovieDetailsActivity).load(Uri.parse(movie.poster)).into(detailsBanner)
-//        detailsTitle.text = movie.title
-//        detailsYear.text = movie.year
-//        if (movie.imdbRating != "N/A") rating.rating = movie.imdbRating.toFloat() * 0.5F
-//        ratingText.text = movie.imdbRating
-//        director.text = movie.director
-//        runtime.text = movie.runtime
-//        plot.text = movie.plot
-//        stars.text = movie.actors
-//        genre.text = movie.genre
-//    }
-//
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.favorite_menu, menu)
-//        return true
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-//        when (item?.itemId) {
-//            R.id.menu_favorite -> {
-//                when (isChecked) {
-//                    true -> {
-//                        isChecked = false
-//                        item.icon = resources.getDrawable(R.drawable.ic_favorite_border_accent_24dp)
-//                        Toast.makeText(this, "Removed from favorites", Toast.LENGTH_SHORT).show()
-//                    }
-//                    false -> {
-//                        isChecked = true
-//                        item.icon = resources.getDrawable(R.drawable.ic_favorite_accent_24dp)
-//                        detailsPresenter.saveMovieToDatabase(movie)
-//                        Toast.makeText(this, "Added to favorites", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//            }
-//        }
-//        return true
-//    }
-//}
+package com.example.lkord.movies.ui.moviedetails
+
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import com.bumptech.glide.Glide
+import com.example.lkord.movies.R
+import com.example.lkord.movies.data.db.entities.Movie
+import com.example.lkord.movies.util.IMAGE_BASE_URL_ORIGINAL
+import com.example.lkord.movies.util.MOVIE_KEY
+import com.example.lkord.movies.util.extensions.loadImage
+import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_movie_details.*
+import kotlinx.android.synthetic.main.toolbar.*
+
+class MovieDetailsActivity : DaggerAppCompatActivity() {
+
+    private val movie by lazy { intent.extras.getSerializable(MOVIE_KEY) as Movie }
+
+    companion object {
+        fun launch(from: Context, movie: Movie) = from.startActivity(Intent(from, MovieDetailsActivity::class.java).putExtra(MOVIE_KEY, movie))
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_movie_details)
+
+        initUI()
+    }
+
+    private fun initUI() {
+        initToolbar()
+        Glide.with(this)
+                .asBitmap()
+                .load(IMAGE_BASE_URL_ORIGINAL + movie.posterPath)
+                .into(moviePoster)
+        overview.text = movie.overview
+    }
+
+    private fun initToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back_arrow_white_24dp)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbarTitle.text = movie.title
+        searchIcon.visibility = View.GONE
+    }
+}

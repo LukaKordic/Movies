@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.lkord.movies.R
 import com.example.lkord.movies.data.db.entities.Movie
+import com.example.lkord.movies.ui.moviedetails.MovieDetailsActivity
 import com.example.lkord.movies.ui.nowPlaying.adapters.MovieAdapter
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.viewModels.NowPlayingViewModel
@@ -23,7 +24,7 @@ class NowPlayingFragment : DaggerFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel by lazy { getViewModel<NowPlayingViewModel>(viewModelFactory) }
-    private val movieAdapter = MovieAdapter {} //pass lambda to get details about selected movie from api
+    private val movieAdapter = MovieAdapter { MovieDetailsActivity.launch(activity!!, it)} //pass lambda to get details about selected movie from api
 
     companion object {
         fun getInstance() = NowPlayingFragment()
