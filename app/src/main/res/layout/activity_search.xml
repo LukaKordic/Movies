@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lkord.movies.ui.search.SearchActivity">
+    android:background="@drawable/background"
+    tools:context="com.example.lkord.movies.ui.nowPlaying.view.SearchActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/searchResults"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
-</merge>
+    <ProgressBar
+        android:id="@+id/searchProgress"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</FrameLayout>

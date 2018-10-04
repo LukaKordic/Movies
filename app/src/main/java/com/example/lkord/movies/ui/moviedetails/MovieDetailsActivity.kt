@@ -2,65 +2,47 @@ package com.example.lkord.movies.ui.moviedetails
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
+import android.view.View
 import com.bumptech.glide.Glide
-import com.example.lkord.movies.App
 import com.example.lkord.movies.R
-import com.example.lkord.movies.common.DETAILS_KEY
-import com.example.lkord.movies.dataobjects.Movie
-import com.example.lkord.movies.networking.OMDBService
+import com.example.lkord.movies.data.db.entities.Movie
+import com.example.lkord.movies.util.IMAGE_BASE_URL_ORIGINAL
+import com.example.lkord.movies.util.MOVIE_KEY
+import com.example.lkord.movies.util.extensions.loadImage
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_movie_details.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.android.synthetic.main.toolbar.*
 
-class MovieDetailsActivity : AppCompatActivity(), Callback<Movie> {
+class MovieDetailsActivity : DaggerAppCompatActivity() {
 
-    private val retrofit = App.getRetrofitInstance()
-    private val omdbService = retrofit.create(OMDBService::class.java)
+    private val movie by lazy { intent.extras.getSerializable(MOVIE_KEY) as Movie }
+
+    companion object {
+        fun launch(from: Context, movie: Movie) = from.startActivity(Intent(from, MovieDetailsActivity::class.java).putExtra(MOVIE_KEY, movie))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
 
-        val title = intent.getStringExtra(DETAILS_KEY)
-        doSearch(title)
+        initUI()
     }
 
-    private fun doSearch(searchQuery: String) {
-        omdbService.detailedSearchByTitle(searchQuery).enqueue(this)
+    private fun initUI() {
+        initToolbar()
+        Glide.with(this)
+                .asBitmap()
+                .load(IMAGE_BASE_URL_ORIGINAL + movie.posterPath)
+                .into(moviePoster)
+        overview.text = movie.overview
     }
 
-    override fun onFailure(call: Call<Movie>?, t: Throwable?) {
-        t?.printStackTrace()
-        Toast.makeText(this, getString(R.string.search_failed), Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onResponse(call: Call<Movie>?, response: Response<Movie>?) {
-        updateUI(response?.body())
-    }
-
-    private fun updateUI(movie: Movie?) {
-        movie?.let {
-            it.poster?.let {
-                Glide.with(this)
-                    .load(Uri.parse(it))
-                    .into(detailsBanner)
-            }
-            detailsTitle.text = it.title
-            detailsYear.text = it.year
-            it.imdbRating?.let { rating.rating = it.toFloat() * 0.5F }
-        }
-    }
-
-    companion object {
-        fun getLaunchIntent(from: Context, movieTitle: String?): Intent {
-            val intent = Intent(from, MovieDetailsActivity::class.java)
-            intent.putExtra(DETAILS_KEY, movieTitle)
-            return intent
-        }
+    private fun initToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back_arrow_white_24dp)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbarTitle.text = movie.title
+        searchIcon.visibility = View.GONE
     }
 }
