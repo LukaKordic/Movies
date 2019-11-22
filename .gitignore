@@ -8,3 +8,5 @@
 /captures
 .externalNativeBuild
 app/google-services.json
+com/example/lkord/movies/Keys.kt
+/app/src/main/java/com/example/lkord/movies/Keys.kt
