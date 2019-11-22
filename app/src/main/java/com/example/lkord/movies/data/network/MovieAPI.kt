@@ -1,12 +1,13 @@
 package com.example.lkord.movies.data.network
 
+import com.example.lkord.movies.TMDB_API_KEY
 import com.example.lkord.movies.model.responses.MovieResponse
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val API_KEY: String = "b02312b8e3c99d1bc9b7a02f2d75b205"
+private const val API_KEY: String = TMDB_API_KEY
 
 interface MovieAPI {
 
