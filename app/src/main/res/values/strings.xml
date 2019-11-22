@@ -13,4 +13,5 @@
     <string name="child_movies">movies</string>
     <string name="now_playing">Now Playing</string>
     <string name="popular_title">Popular</string>
+  <string name="search_content_description">Search button</string>
 </resources>
