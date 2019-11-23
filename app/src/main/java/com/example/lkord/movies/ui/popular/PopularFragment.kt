@@ -1,10 +1,10 @@
 package com.example.lkord.movies.ui.popular
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,8 +44,8 @@ class PopularFragment : DaggerFragment() {
     private fun initRecyclerView() {
         with(movieRecyclerView) {
             adapter = movieAdapter
-            itemAnimator = DefaultItemAnimator()
-            layoutManager = GridLayoutManager(activity, 2)
+            itemAnimator = androidx.recyclerview.widget.DefaultItemAnimator()
+            layoutManager = androidx.recyclerview.widget.GridLayoutManager(activity, 2)
             setHasFixedSize(true)
         }
     }

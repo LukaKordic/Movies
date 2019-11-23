@@ -1,6 +1,6 @@
 package com.example.lkord.movies.di.modules
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import android.content.Context
 import com.example.lkord.movies.util.DATABASE_NAME
 import com.example.lkord.movies.data.LocalStorage

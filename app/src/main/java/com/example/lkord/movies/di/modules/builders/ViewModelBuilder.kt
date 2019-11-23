@@ -1,7 +1,7 @@
 package com.example.lkord.movies.di.modules.builders
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.lkord.movies.di.DaggerAwareViewModelFactory
 import com.example.lkord.movies.di.ViewModelKey
 import com.example.lkord.movies.viewModels.NowPlayingViewModel
