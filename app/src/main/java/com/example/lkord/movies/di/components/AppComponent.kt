@@ -1,20 +1,30 @@
 package com.example.lkord.movies.di.components
 
-import com.example.lkord.movies.App
+import android.content.Context
 import com.example.lkord.movies.di.modules.AppModule
-import com.example.lkord.movies.di.modules.builders.ActivityBuilder
-import com.example.lkord.movies.di.modules.builders.FragmentBuilder
 import com.example.lkord.movies.di.modules.builders.ViewModelBuilder
+import com.example.lkord.movies.ui.home.HomeActivity
+import com.example.lkord.movies.ui.moviedetails.MovieDetailsActivity
+import com.example.lkord.movies.ui.nowPlaying.view.NowPlayingFragment
+import com.example.lkord.movies.ui.popular.PopularFragment
+import dagger.BindsInstance
 import dagger.Component
-import dagger.android.AndroidInjector
-import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(
-        modules = [AppModule::class, AndroidSupportInjectionModule::class, ViewModelBuilder::class, ActivityBuilder::class, FragmentBuilder::class])
-interface AppComponent : AndroidInjector<App> {
-  
-  @Component.Builder
-  abstract class Builder : AndroidInjector.Builder<App>()
+@Component(modules = [AppModule::class, ViewModelBuilder::class])
+interface AppComponent {
+
+  fun inject(homeActivity: HomeActivity)
+
+  fun inject(movieDetailsActivity: MovieDetailsActivity)
+
+  fun inject(nowPlayingFragment: NowPlayingFragment)
+
+  fun inject(popularFragment: PopularFragment)
+
+  @Component.Factory
+  interface Factory {
+    fun create(@BindsInstance context: Context): AppComponent
+  }
 }

@@ -1,7 +1,5 @@
 package com.example.lkord.movies.di.modules
 
-import android.content.Context
-import com.example.lkord.movies.App
 import com.example.lkord.movies.util.SCHEDULERS_IO
 import com.example.lkord.movies.util.SCHEDULERS_MAIN
 import dagger.Module
@@ -14,10 +12,6 @@ import javax.inject.Singleton
 
 @Module(includes = [NetworkingModule::class, DatabaseModule::class])
 class AppModule {
-
-    @Provides
-    @Singleton
-    fun provideApplicationContext(application: App): Context = application.applicationContext
 
     @Singleton
     @Provides
