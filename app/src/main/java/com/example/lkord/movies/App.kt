@@ -1,25 +1,24 @@
 package com.example.lkord.movies
 
+import android.app.Application
+import com.example.lkord.movies.di.components.AppComponent
 import com.example.lkord.movies.di.components.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
 import timber.log.Timber
 
-class App : DaggerApplication() {
-  
-  lateinit var instance: App
-    private set
-  
-  override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-    return DaggerAppComponent.builder().create(this)
+class App : Application() {
+
+  companion object {
+    lateinit var instance: App
+      private set
+    lateinit var appComponent: AppComponent
   }
-  
+
   override fun onCreate() {
     super.onCreate()
     instance = this
-    
+
+    appComponent = DaggerAppComponent.factory().create(this.applicationContext)
     if (BuildConfig.DEBUG)
       Timber.plant(Timber.DebugTree())
   }
 }
-

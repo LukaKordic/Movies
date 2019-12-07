@@ -1,11 +1,11 @@
 package com.example.lkord.movies.viewModels
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
-import com.example.lkord.movies.data.db.entities.Movie
-import com.example.lkord.movies.repositories.MovieRepository
-import com.example.lkord.movies.util.POPULAR_TYPE
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.example.data.common.POPULAR_TYPE
+import com.example.domain.model.Movie
+import com.example.data.repositories.MovieRepository
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
