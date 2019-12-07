@@ -2,6 +2,8 @@ package com.example.lkord.movies.di.components
 
 import android.content.Context
 import com.example.lkord.movies.di.modules.AppModule
+import com.example.lkord.movies.di.modules.DatabaseModule
+import com.example.lkord.movies.di.modules.ServicesModule
 import com.example.lkord.movies.di.modules.builders.ViewModelBuilder
 import com.example.lkord.movies.ui.home.HomeActivity
 import com.example.lkord.movies.ui.moviedetails.MovieDetailsActivity
@@ -12,7 +14,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AppModule::class, ViewModelBuilder::class])
+@Component(modules = [AppModule::class, ViewModelBuilder::class, DatabaseModule::class, ServicesModule::class])
 interface AppComponent {
 
   fun inject(homeActivity: HomeActivity)

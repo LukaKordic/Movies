@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.domain.model.Movie
+import com.example.lkord.movies.App
 import com.example.lkord.movies.R
-import com.example.lkord.movies.data.db.entities.Movie
 import com.example.lkord.movies.ui.nowPlaying.adapters.MovieAdapter
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.viewModels.PopularViewModel
@@ -34,7 +35,7 @@ class PopularFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
 
     initRecyclerView()
-
+    App.appComponent.inject(this)
     viewModel.popularLiveData.observe(this, Observer { it?.run(::displayData) })
     viewModel.getPopularMovies()
   }

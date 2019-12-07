@@ -10,16 +10,15 @@ class App : Application() {
   companion object {
     lateinit var instance: App
       private set
-    lateinit var component: AppComponent
+    lateinit var appComponent: AppComponent
   }
 
   override fun onCreate() {
     super.onCreate()
     instance = this
 
-    component = DaggerAppComponent.factory().create(this.applicationContext)
+    appComponent = DaggerAppComponent.factory().create(this.applicationContext)
     if (BuildConfig.DEBUG)
       Timber.plant(Timber.DebugTree())
   }
 }
-

@@ -5,29 +5,29 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.bumptech.glide.Glide
+import com.example.domain.model.Movie
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
 import com.example.lkord.movies.common.base.BaseActivity
-import com.example.lkord.movies.data.db.entities.Movie
 import com.example.lkord.movies.util.IMAGE_BASE_URL_ORIGINAL
 import com.example.lkord.movies.util.MOVIE_KEY
 import kotlinx.android.synthetic.main.activity_movie_details.*
 import kotlinx.android.synthetic.main.toolbar.*
 
+fun startMovieDetailsActivity(from: Context, movie: Movie) = from.startActivity(
+    Intent(from, MovieDetailsActivity::class.java).putExtra(MOVIE_KEY, movie)
+)
+
 class MovieDetailsActivity : BaseActivity() {
 
   private val movie by lazy { intent.extras?.getSerializable(MOVIE_KEY) as Movie }
 
-  companion object {
-    fun launch(from: Context, movie: Movie) = from.startActivity(Intent(from, MovieDetailsActivity::class.java).putExtra(MOVIE_KEY, movie))
-  }
-
-  override fun injectDependencies() = App.component.inject(this)
+  override fun injectDependencies() = App.appComponent.inject(this)
 
   override fun getLayout() = R.layout.activity_movie_details
 
   override fun viewReady() {
-
+/* no-op */
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
