@@ -32,6 +32,7 @@ ext {
   retrofitVersion = '2.6.2'
   interceptorVersion = '4.2.2'
   gsonVersion = '2.6.2'
+  coroutinesVersion = '1.3.2'
 }
 
 dependencies {
@@ -47,7 +48,6 @@ dependencies {
 
   //room
   implementation "androidx.room:room-runtime:$roomVersion"
-  implementation "androidx.room:room-rxjava2:$roomVersion"
   kapt "androidx.room:room-compiler:$roomVersion"
 
   //di
@@ -61,4 +61,8 @@ dependencies {
 
   //JSON parsing
   implementation "com.squareup.retrofit2:converter-gson:$gsonVersion"
+
+  //coroutines
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 }

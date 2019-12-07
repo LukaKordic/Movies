@@ -4,25 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.model.Movie
-import com.example.data.repositories.MovieRepository
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class NowPlayingViewModel @Inject constructor(private val movieRepository: MovieRepository) : ViewModel() {
+class NowPlayingViewModel @Inject constructor() : ViewModel() {
 
-    private val compositeDisposable = CompositeDisposable()
-    private val _nowPlayingLiveData = MutableLiveData<List<Movie>>()
-    val nowPlayingLiveData: LiveData<List<Movie>>
-        get() = _nowPlayingLiveData
+  private val _nowPlayingLiveData = MutableLiveData<List<Movie>>()
+  val nowPlayingLiveData: LiveData<List<Movie>>
+    get() = _nowPlayingLiveData
 
-    fun getNowPlayingMovies() {
-        compositeDisposable.add(movieRepository.fetchAndSaveNowPlayingMovies()
-                .subscribe({ _nowPlayingLiveData.value = it },
-                        { Throwable(it.message) }))
-    }
-
-    override fun onCleared() {
-        compositeDisposable.clear()
-        super.onCleared()
-    }
+  fun getNowPlayingMovies() {
+    // TODO: 2019-12-07 call use case
+  }
 }

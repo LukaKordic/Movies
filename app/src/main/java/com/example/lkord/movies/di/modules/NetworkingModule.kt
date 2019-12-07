@@ -1,7 +1,6 @@
 package com.example.lkord.movies.di.modules
 
 import com.example.data.networking.MovieAPI
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -37,16 +36,11 @@ class NetworkingModule {
 
   @Singleton
   @Provides
-  fun rxJavaAdapter(): RxJava2CallAdapterFactory = RxJava2CallAdapterFactory.create()
-
-  @Singleton
-  @Provides
-  fun retrofit(baseUrl: String, client: OkHttpClient, converterFactory: GsonConverterFactory, rxJava2CallAdapterFactory: RxJava2CallAdapterFactory): Retrofit =
+  fun retrofit(baseUrl: String, client: OkHttpClient, converterFactory: GsonConverterFactory): Retrofit =
       Retrofit.Builder().apply {
         client(client)
         baseUrl(baseUrl)
         addConverterFactory(converterFactory)
-        addCallAdapterFactory(rxJava2CallAdapterFactory)
       }.build()
 
   @Singleton
