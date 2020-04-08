@@ -6,13 +6,11 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val API_KEY: String = TMDB_API_KEY
-
 interface MovieAPI {
 
   @GET("movie/now_playing")
-  suspend fun getNowPlayingMovies(@Query("api_key") apiKey: String = API_KEY): Response<MovieResponseWrapper>
+  suspend fun getNowPlayingMovies(@Query("api_key") apiKey: String = TMDB_API_KEY): Response<MovieResponseWrapper>
 
   @GET("movie/popular")
-  suspend fun getPopularMovies(@Query("api_key") apiKey: String = API_KEY): Response<MovieResponseWrapper>
+  suspend fun getPopularMovies(@Query("api_key") apiKey: String = TMDB_API_KEY): Response<MovieResponseWrapper>
 }

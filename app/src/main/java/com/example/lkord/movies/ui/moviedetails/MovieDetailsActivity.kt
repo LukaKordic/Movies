@@ -2,7 +2,6 @@ package com.example.lkord.movies.ui.moviedetails
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
 import com.bumptech.glide.Glide
 import com.example.domain.model.Movie
@@ -27,16 +26,6 @@ class MovieDetailsActivity : BaseActivity() {
   override fun getLayout() = R.layout.activity_movie_details
 
   override fun viewReady() {
-/* no-op */
-  }
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_movie_details)
-    initUI()
-  }
-
-  private fun initUI() {
     initToolbar()
     Glide.with(this)
         .asBitmap()

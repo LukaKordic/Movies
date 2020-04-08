@@ -9,7 +9,6 @@ import javax.inject.Inject
 class PopularViewModel @Inject constructor() : ViewModel() {
 
     private val _popularLiveData = MutableLiveData<List<Movie>>()
-
     val popularLiveData: LiveData<List<Movie>>
         get() = _popularLiveData
 
