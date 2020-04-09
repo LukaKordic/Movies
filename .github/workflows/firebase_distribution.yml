@@ -13,4 +13,4 @@ jobs:
         env:
           PASSPHRASE_DISTRIBUTION: ${{ secrets.PASSPHRASE_DISTRIBUTION }}
       - name: Build release apk
-        run: bash ./gradlew assembleRelease appDistributionUploadRelease
+        run: bash ./gradlew assembleRelease appDistributionUploadRelease --stacktrace
