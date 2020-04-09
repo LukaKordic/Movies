@@ -11,9 +11,9 @@ jobs:
       - name: Decrypt secret
         run: ./.github/scripts/decrypt_secret.sh
         env:
-          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+          PASSPHRASE_DISTRIBUTION: ${{ secrets.PASSPHRASE_DISTRIBUTION }}
       # This command is just an example to show your secret being printed
       # Ensure you remove any print statements of your secrets. GitHub does
       # not hide secrets that use this workaround.
       - name: Test printing your secret (Remove this step in production)
-        run: cat $HOME/secrets/my_secret.json
+        run: cat $HOME/secrets/movies-d8bf0-96de52f83acf.json
