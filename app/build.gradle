@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.google.firebase.appdistribution'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
@@ -20,10 +19,6 @@ android {
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-      firebaseAppDistribution {
-        groups = "dev-group"
-        serviceCredentialsFile = "movies-d8bf0-96de52f83acf.json"
-      }
     }
   }
 
