@@ -22,7 +22,7 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       firebaseAppDistribution {
         groups = "dev-group"
-        serviceCredentialsFile = "movies-d8bf0-96de52f83acf.json"
+        serviceCredentialsFile = "$rootDir/movies-d8bf0-96de52f83acf.json"
       }
     }
   }
