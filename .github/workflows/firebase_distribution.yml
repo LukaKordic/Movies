@@ -1,18 +1,24 @@
-name: Firebase App Distribution
+name: Build & upload to Firebase App Distribution
 
-on: push
-#Add branch here to only trigger this workflow for qa branch
+on: [push] #Add condition to only trigger this for QA branches
+
 jobs:
-  my-job:
-    name: Build apk
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Decrypt secret
-        run: ./.github/scripts/decrypt_secret.sh
-        env:
-          PASSPHRASE_DISTRIBUTION: ${{ secrets.PASSPHRASE_DISTRIBUTION }}
-      - name: Build release apk
-        run: bash ./gradlew assembleRelease appDistributionUploadRelease --stacktrace
+      - uses: actions/checkout@v1
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
         with:
-          path: $HOME/movies-d8bf0-96de52f83acf.json
+          java-version: 1.8
+      - name: Assemble release
+        run: ./gradlew assembleRelease
+      - name: Upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          groups: dev-group
+          file: app/build/outputs/apk/release/app-release-unsigned.apk
