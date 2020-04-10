@@ -4,7 +4,7 @@ on: push
 #Add branch here to only trigger this workflow for qa branch
 jobs:
   my-job:
-    build: Build apk
+    name: Build apk
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
