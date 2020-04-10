@@ -14,3 +14,5 @@ jobs:
           PASSPHRASE_DISTRIBUTION: ${{ secrets.PASSPHRASE_DISTRIBUTION }}
       - name: Build release apk
         run: bash ./gradlew assembleRelease appDistributionUploadRelease --stacktrace
+        with:
+          path: $HOME/movies-d8bf0-96de52f83acf.json
