@@ -4,7 +4,7 @@ on: [push] #Add condition to only trigger this for QA branches
 
 jobs:
   build:
-
+    name: Build and Upload to Firebase
     runs-on: ubuntu-latest
 
     steps:
@@ -14,7 +14,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Assemble release
-        run: ./gradlew assembleRelease
+        run: bash ./gradlew assembleRelease
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
         with:
