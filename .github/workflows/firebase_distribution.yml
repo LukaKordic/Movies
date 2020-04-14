@@ -1,6 +1,8 @@
 name: Build & upload to Firebase App Distribution
 
-on: [push] #Add condition to only trigger this for QA branches
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   build:
