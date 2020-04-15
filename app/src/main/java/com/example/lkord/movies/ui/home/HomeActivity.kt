@@ -45,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
   }
 
   private fun startNowPlayingFragment() {
-    supportFragmentManager.replace(R.id.container, NowPlayingFragment.getInstance())
+    supportFragmentManager.replace(R.id.container, NowPlayingFragment.newInstance())
   }
 
   private fun startPopularFragment() {

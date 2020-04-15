@@ -16,6 +16,7 @@ import com.example.lkord.movies.ui.nowPlaying.adapters.MovieAdapter
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.viewModels.NowPlayingViewModel
 import kotlinx.android.synthetic.main.fragment_now_playing.*
+import java.util.*
 import javax.inject.Inject
 
 class NowPlayingFragment : Fragment() {
@@ -25,10 +26,6 @@ class NowPlayingFragment : Fragment() {
 
   private val viewModel by lazy { getViewModel<NowPlayingViewModel>(viewModelFactory) }
   private val movieAdapter = MovieAdapter(::onListItemClicked)
-
-  companion object {
-    fun getInstance() = NowPlayingFragment()
-  }
 
   override fun onAttach(context: Context) {
     super.onAttach(context)
@@ -44,6 +41,7 @@ class NowPlayingFragment : Fragment() {
     initRecyclerView()
     viewModel.getNowPlayingMovies()
     viewModel.nowPlayingLiveData.observe(this, Observer { it?.run(::onDataChange) })
+    TimeZone.getAvailableIDs().forEach { println(it) }
   }
 
   private fun initRecyclerView() {
@@ -62,4 +60,8 @@ class NowPlayingFragment : Fragment() {
   }
 
   private fun onDataChange(data: List<Movie>) = movieAdapter.addMovies(data)
+
+  companion object {
+    fun newInstance() = NowPlayingFragment()
+  }
 }
