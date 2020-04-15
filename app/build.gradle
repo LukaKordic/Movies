@@ -34,7 +34,6 @@ ext {
   constraintLayoutVersion = "1.1.3"
   daggerVersion = "2.22"
   lifecycleVersion = "2.2.0"
-  rxVersion = "2.0.2"
   timberVersion = "4.7.1"
   roomVersion = "2.2.5"
   retrofitVersion = '2.6.2'
