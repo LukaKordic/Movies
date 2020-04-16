@@ -18,7 +18,7 @@ jobs:
       - name: Add secrets
         run: |
           cat > apikey.properties << ENDOFFILE
-          TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}
+          TMDB_API_TOKEN=${{ secrets.TMDB_API_TOKEN }}
           ENDOFFILE
       - name: Assemble release
         run: bash ./gradlew assembleRelease
