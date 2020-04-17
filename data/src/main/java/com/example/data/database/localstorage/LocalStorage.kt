@@ -1,4 +1,4 @@
-package com.example.domain.localstorage
+package com.example.data.database.localstorage
 
 import com.example.data.database.entity.MovieEntity
 import com.example.domain.model.Movie

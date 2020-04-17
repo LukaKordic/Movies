@@ -16,7 +16,6 @@ import com.example.lkord.movies.ui.nowPlaying.adapters.MovieAdapter
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.viewModels.NowPlayingViewModel
 import kotlinx.android.synthetic.main.fragment_now_playing.*
-import java.util.*
 import javax.inject.Inject
 
 class NowPlayingFragment : Fragment() {
@@ -39,9 +38,8 @@ class NowPlayingFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     initRecyclerView()
-    viewModel.getNowPlayingMovies()
-    viewModel.nowPlayingLiveData.observe(this, Observer { it?.run(::onDataChange) })
-    TimeZone.getAvailableIDs().forEach { println(it) }
+    viewModel.fetchNowPlayingMovies()
+    viewModel.getNowPlaying().observe(this, Observer { it?.run(::onDataChange) })
   }
 
   private fun initRecyclerView() {
