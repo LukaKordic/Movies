@@ -1,10 +1,11 @@
 package com.example.data.networking.service
 
 import com.example.data.networking.model.response.MovieResponseWrapper
+import com.example.domain.common.NetworkResult
 
 interface MovieApiService {
 
-  suspend fun getNowPlayingMovies(): MovieResponseWrapper
+  suspend fun getNowPlayingMovies(): NetworkResult<MovieResponseWrapper>
 
-  suspend fun getPopularMovies(): MovieResponseWrapper
+  suspend fun getPopularMovies(): NetworkResult<MovieResponseWrapper>
 }
