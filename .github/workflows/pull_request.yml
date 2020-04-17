@@ -15,10 +15,10 @@ jobs:
       with:
         java-version: 1.8
     - name: Add secrets
-        run: |
-          cat > apikey.properties << ENDOFFILE
-          TMDB_API_TOKEN=${{ secrets.TMDB_API_TOKEN }}
-          ENDOFFILE
+      run: |
+        cat > apikey.properties << ENDOFFILE
+        TMDB_API_TOKEN=${{ secrets.TMDB_API_TOKEN }}
+        ENDOFFILE
     - name: Assemble debug
       run: bash ./gradlew assembleDebug
     - name: Run Unit Tests
