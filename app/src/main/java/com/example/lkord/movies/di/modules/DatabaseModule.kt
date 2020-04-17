@@ -3,7 +3,7 @@ package com.example.lkord.movies.di.modules
 import android.content.Context
 import androidx.room.Room
 import com.example.data.common.DATABASE_NAME
-import com.example.data.database.LocalStorage
+import com.example.data.database.localstorage.LocalStorage
 import com.example.data.database.LocalStorageImpl
 import dagger.Module
 import dagger.Provides

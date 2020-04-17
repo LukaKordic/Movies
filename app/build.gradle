@@ -101,6 +101,9 @@ dependencies {
   implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
   kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
 
+  //viewmodel extensions
+  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+
   //logging
   implementation "com.jakewharton.timber:timber:$timberVersion"
 }

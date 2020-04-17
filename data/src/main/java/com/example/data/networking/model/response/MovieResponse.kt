@@ -1,6 +1,7 @@
 package com.example.data.networking.model.response
 
 import com.example.data.database.entity.MovieEntity
+import com.example.domain.model.Movie
 import com.google.gson.annotations.SerializedName
 
 data class MovieResponse(
@@ -17,3 +18,5 @@ data class MovieResponse(
 )
 
 fun MovieResponse.mapToDbEntity() = MovieEntity(id, title, voteAverage, popularity, posterPath, overview, releaseDate)
+
+fun MovieResponse.mapToDomainModel() = Movie(id, title, voteAverage, popularity, posterPath, overview, releaseDate)
