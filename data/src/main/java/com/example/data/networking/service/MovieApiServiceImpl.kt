@@ -2,15 +2,28 @@ package com.example.data.networking.service
 
 import com.example.data.networking.MovieAPI
 import com.example.data.networking.model.response.MovieResponseWrapper
+import com.example.domain.common.Failure
+import com.example.domain.common.NetworkResult
+import com.example.domain.common.Success
 import javax.inject.Inject
 
 class MovieApiServiceImpl @Inject constructor(private val movieApi: MovieAPI) : MovieApiService {
 
-  override suspend fun getNowPlayingMovies(): MovieResponseWrapper {
-    return MovieResponseWrapper(emptyList()) // TODO: 2019-12-07 Implement Kotlin Flow
+  override suspend fun getNowPlayingMovies(): NetworkResult<MovieResponseWrapper> {
+    movieApi.getNowPlayingMovies().run {
+      body()?.let { return Success(it) }
+      errorBody()?.let { return Failure(Throwable(message())) }
+    }
+
+    return Failure(KotlinNullPointerException()) // This should never happen.
   }
 
-  override suspend fun getPopularMovies(): MovieResponseWrapper {
-    return MovieResponseWrapper(emptyList())  // FIXME: 2019-12-07 Implement Kotlin Flow
+  override suspend fun getPopularMovies(): NetworkResult<MovieResponseWrapper> {
+    movieApi.getPopularMovies().run {
+      body()?.let { return Success(it) }
+      errorBody()?.let { return Failure(Throwable(message())) }
+    }
+
+    return Failure(KotlinNullPointerException()) // This should never happen.
   }
 }
