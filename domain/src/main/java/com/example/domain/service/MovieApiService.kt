@@ -1,4 +1,4 @@
-package com.example.data.networking.service
+package com.example.domain.service
 
 import com.example.data.networking.model.response.MovieResponseWrapper
 import com.example.domain.common.NetworkResult
