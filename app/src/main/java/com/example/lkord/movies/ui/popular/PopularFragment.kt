@@ -11,8 +11,14 @@ import com.example.domain.model.Movie
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
 import com.example.lkord.movies.ui.nowPlaying.adapters.MovieAdapter
+import com.example.lkord.movies.ui.nowPlaying.view.Data
+import com.example.lkord.movies.ui.nowPlaying.view.Error
+import com.example.lkord.movies.ui.nowPlaying.view.Loading
+import com.example.lkord.movies.ui.nowPlaying.view.MovieListViewState
 import com.example.lkord.movies.util.extensions.getViewModel
+import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.viewModels.PopularViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_popular.*
 import javax.inject.Inject
 
@@ -23,10 +29,6 @@ class PopularFragment : Fragment() {
   private val viewModel by lazy { getViewModel<PopularViewModel>(factory) }
   private val movieAdapter = MovieAdapter {}
 
-  companion object {
-    fun getInstance() = PopularFragment()
-  }
-
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     return inflater.inflate(R.layout.fragment_popular, container, false)
   }
@@ -36,7 +38,7 @@ class PopularFragment : Fragment() {
 
     initRecyclerView()
     App.appComponent.inject(this)
-    viewModel.popularLiveData.observe(this, Observer { it?.run(::displayData) })
+    viewModel.getPopularViewState().observe(viewLifecycleOwner, Observer { it.run(::onViewStateChanged) })
     viewModel.getPopularMovies()
   }
 
@@ -49,5 +51,33 @@ class PopularFragment : Fragment() {
     }
   }
 
-  private fun displayData(data: List<Movie>) = movieAdapter.addMovies(data)
+  private fun onViewStateChanged(viewState: MovieListViewState) {
+    when (viewState) {
+      is Data -> handleData(viewState.movies)
+      is Error -> showError(viewState.error)
+      Loading -> showLoading()
+    }
+  }
+
+  private fun showLoading() {
+    loadingIndicator.isVisible = true
+  }
+
+  private fun hideLoading() {
+    loadingIndicator.isVisible = false
+  }
+
+  private fun handleData(movies: List<Movie>) {
+    hideLoading()
+    movieAdapter.addMovies(movies)
+  }
+
+  private fun showError(error: Throwable) {
+    hideLoading()
+    Snackbar.make(activity?.findViewById(R.id.rootView)!!, error.message ?: "", Snackbar.LENGTH_LONG)
+  }
+
+  companion object {
+    fun getInstance() = PopularFragment()
+  }
 }

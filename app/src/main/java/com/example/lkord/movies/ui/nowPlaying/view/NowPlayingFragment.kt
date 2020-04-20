@@ -41,7 +41,7 @@ class NowPlayingFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
     initRecyclerView()
     viewModel.fetchNowPlayingMovies()
-    viewModel.getNowPlaying().observe(viewLifecycleOwner, Observer { it?.run(::onViewStateChanged) })
+    viewModel.getNowPlayingViewState().observe(viewLifecycleOwner, Observer { it?.run(::onViewStateChanged) })
   }
 
   private fun initRecyclerView() {
@@ -59,7 +59,7 @@ class NowPlayingFragment : Fragment() {
     }
   }
 
-  private fun onViewStateChanged(viewState: NowPlayingViewState) {
+  private fun onViewStateChanged(viewState: MovieListViewState) {
     when (viewState) {
       is Data -> handleData(viewState.movies)
       is Error -> showError(viewState.error)

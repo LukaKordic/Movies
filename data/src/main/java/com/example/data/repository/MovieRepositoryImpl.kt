@@ -1,5 +1,7 @@
 package com.example.data.repository
 
+import com.example.data.common.NOW_PLAYING_TYPE
+import com.example.data.common.POPULAR_TYPE
 import com.example.data.database.localstorage.LocalStorage
 import com.example.data.networking.model.response.mapToDbEntity
 import com.example.data.networking.model.response.mapToDomainModel
@@ -19,7 +21,9 @@ class MovieRepositoryImpl @Inject constructor(
     // TODO: 17/04/2020 add network connectivity check
     movieApiService.getNowPlayingMovies()
         .onSuccess {
-          localStorage.storeMovies(it.movies.map { movieResponse -> movieResponse.mapToDbEntity() })
+          localStorage.storeMovies(it.movies.map { movieResponse ->
+            movieResponse.mapToDbEntity().also { movieEntity -> movieEntity.movieType = NOW_PLAYING_TYPE }
+          })
           return Success(it.movies.map { movieResponse -> movieResponse.mapToDomainModel() })
         }
         .onFailure { return Failure(it) }
@@ -27,6 +31,13 @@ class MovieRepositoryImpl @Inject constructor(
   }
 
   override suspend fun fetchAndSavePopularMovies(): DataResult<List<Movie>> {
-    TODO("Not yet implemented")
+    movieApiService.getPopularMovies()
+        .onSuccess {
+          localStorage.storeMovies(it.movies.map { movieResponse ->
+            movieResponse.mapToDbEntity().also { movieEntity -> movieEntity.movieType = POPULAR_TYPE} })
+          return Success(it.movies.map { movieResponse -> movieResponse.mapToDomainModel() })
+        }
+        .onFailure { return Failure(it) }
+    return Failure(Throwable())
   }
 }
