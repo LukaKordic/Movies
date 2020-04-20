@@ -14,7 +14,9 @@ import com.example.lkord.movies.R
 import com.example.lkord.movies.ui.moviedetails.startMovieDetailsActivity
 import com.example.lkord.movies.ui.nowPlaying.adapters.MovieAdapter
 import com.example.lkord.movies.util.extensions.getViewModel
+import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.viewModels.NowPlayingViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_now_playing.*
 import javax.inject.Inject
 
@@ -39,7 +41,7 @@ class NowPlayingFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
     initRecyclerView()
     viewModel.fetchNowPlayingMovies()
-    viewModel.getNowPlaying().observe(this, Observer { it?.run(::onDataChange) })
+    viewModel.getNowPlaying().observe(viewLifecycleOwner, Observer { it?.run(::onViewStateChanged) })
   }
 
   private fun initRecyclerView() {
@@ -57,7 +59,31 @@ class NowPlayingFragment : Fragment() {
     }
   }
 
-  private fun onDataChange(data: List<Movie>) = movieAdapter.addMovies(data)
+  private fun onViewStateChanged(viewState: NowPlayingViewState) {
+    when (viewState) {
+      is Data -> handleData(viewState.movies)
+      is Error -> showError(viewState.error)
+      Loading -> showLoading()
+    }
+  }
+
+  private fun handleData(movies: List<Movie>) {
+    hideLoading()
+    movieAdapter.addMovies(movies)
+  }
+
+  private fun showLoading() {
+    loadingIndicator.isVisible = true
+  }
+
+  private fun hideLoading() {
+    loadingIndicator.isVisible = false
+  }
+
+  private fun showError(error: Throwable) {
+    hideLoading()
+    Snackbar.make(activity?.findViewById(R.id.rootView)!!, error.message ?: "", Snackbar.LENGTH_LONG)
+  }
 
   companion object {
     fun newInstance() = NowPlayingFragment()
