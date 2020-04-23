@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.domain.model.Movie
 import com.example.lkord.movies.App
@@ -17,6 +16,7 @@ import com.example.lkord.movies.ui.nowPlaying.view.Loading
 import com.example.lkord.movies.ui.nowPlaying.view.MovieListViewState
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.util.extensions.isVisible
+import com.example.lkord.movies.util.extensions.subscribe
 import com.example.lkord.movies.viewModels.PopularViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_popular.*
@@ -38,8 +38,7 @@ class PopularFragment : Fragment() {
 
     initRecyclerView()
     App.appComponent.inject(this)
-    viewModel.getPopularViewState().observe(viewLifecycleOwner, Observer { it.run(::onViewStateChanged) })
-    viewModel.getPopularMovies()
+    viewModel.popularViewState.subscribe(viewLifecycleOwner, this::onViewStateChanged)
   }
 
   private fun initRecyclerView() {
