@@ -26,7 +26,7 @@ class NetworkingModule {
   @Provides
   fun httpLoggingInterceptor(): HttpLoggingInterceptor {
     return HttpLoggingInterceptor().apply {
-      level = HttpLoggingInterceptor.Level.BODY
+      level = HttpLoggingInterceptor.Level.HEADERS
     }
   }
 
@@ -41,9 +41,9 @@ class NetworkingModule {
   @Singleton
   @Provides
   fun okhttpClient(httpLoggingInterceptor: HttpLoggingInterceptor, authInterceptor: Interceptor): OkHttpClient {
-   return OkHttpClient.Builder().apply {
+    return OkHttpClient.Builder().apply {
       if (BuildConfig.DEBUG) addInterceptor(httpLoggingInterceptor)
-      addInterceptor(authInterceptor)
+      addNetworkInterceptor(authInterceptor)
     }.build()
   }
 

@@ -7,22 +7,15 @@ import com.example.lkord.movies.ui.nowPlaying.view.NowPlayingFragment
 import com.example.lkord.movies.ui.popular.PopularFragment
 import com.example.lkord.movies.util.extensions.onItemTapped
 import com.example.lkord.movies.util.extensions.replace
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-    initToolbar()
+    setContentView(R.layout.activity_home)
     initBottomNavigation()
     startNowPlayingFragment()
-  }
-
-  private fun initToolbar() {
-    setSupportActionBar(toolbar)
-    toolbarTitle.text = getString(R.string.now_playing)
   }
 
   private fun initBottomNavigation() {
@@ -30,15 +23,12 @@ class HomeActivity : AppCompatActivity() {
       when (it) {
         R.id.navigationNowPlaying -> {
           startNowPlayingFragment()
-          toolbarTitle.text = getString(R.string.now_playing)
         }
         R.id.navigationPopular -> {
           startPopularFragment()
-          toolbarTitle.text = getString(R.string.popular)
         }
         R.id.navigationFavourites -> {
           startFavouritesFragment()
-          toolbarTitle.text = getString(R.string.favourites)
         }
       }
     }
