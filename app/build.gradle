@@ -100,6 +100,7 @@ dependencies {
   //live data
   implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
   kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+  implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
   //viewmodel extensions
   implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"

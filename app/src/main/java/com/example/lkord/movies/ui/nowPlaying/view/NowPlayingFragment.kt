@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.domain.model.Movie
 import com.example.lkord.movies.App
@@ -15,6 +14,7 @@ import com.example.lkord.movies.ui.moviedetails.startMovieDetailsActivity
 import com.example.lkord.movies.ui.nowPlaying.adapters.MovieAdapter
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.util.extensions.isVisible
+import com.example.lkord.movies.util.extensions.subscribe
 import com.example.lkord.movies.viewModels.NowPlayingViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_now_playing.*
@@ -40,8 +40,7 @@ class NowPlayingFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     initRecyclerView()
-    viewModel.fetchNowPlayingMovies()
-    viewModel.getNowPlayingViewState().observe(viewLifecycleOwner, Observer { it?.run(::onViewStateChanged) })
+    viewModel.nowPlayingViewState.subscribe(viewLifecycleOwner, this::onViewStateChanged)
   }
 
   private fun initRecyclerView() {
