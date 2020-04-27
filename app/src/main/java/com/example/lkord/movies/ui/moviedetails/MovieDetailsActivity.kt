@@ -2,32 +2,23 @@ package com.example.lkord.movies.ui.moviedetails
 
 import android.content.Context
 import android.content.Intent
-import com.bumptech.glide.Glide
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.domain.model.Movie
-import com.example.lkord.movies.App
 import com.example.lkord.movies.R
-import com.example.lkord.movies.common.base.BaseActivity
-import com.example.lkord.movies.util.IMAGE_BASE_URL_ORIGINAL
 import com.example.lkord.movies.util.MOVIE_KEY
 import kotlinx.android.synthetic.main.activity_movie_details.*
 
 fun startMovieDetailsActivity(from: Context, movie: Movie) = from.startActivity(
-    Intent(from, MovieDetailsActivity::class.java).putExtra(MOVIE_KEY, movie)
-)
+    Intent(from, MovieDetailsActivity::class.java).putExtra(MOVIE_KEY, movie))
 
-class MovieDetailsActivity : BaseActivity() {
+class MovieDetailsActivity : AppCompatActivity() {
 
   private val movie by lazy { intent.extras?.getSerializable(MOVIE_KEY) as Movie }
 
-  override fun injectDependencies() = App.appComponent.inject(this)
-
-  override fun getLayout() = R.layout.activity_movie_details
-
-  override fun viewReady() {
-    Glide.with(this)
-        .asBitmap()
-        .load(IMAGE_BASE_URL_ORIGINAL + movie.posterPath)
-        .into(moviePoster)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_movie_details)
     overview.text = movie.overview
   }
 }

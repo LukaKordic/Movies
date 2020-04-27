@@ -8,11 +8,11 @@ import com.example.domain.model.Movie
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
 import com.example.lkord.movies.presentation.PopularViewModel
-import com.example.lkord.movies.ui.topRated.list.MovieAdapter
-import com.example.lkord.movies.ui.topRated.view.Data
-import com.example.lkord.movies.ui.topRated.view.Error
-import com.example.lkord.movies.ui.topRated.view.Loading
-import com.example.lkord.movies.ui.topRated.view.MovieListViewState
+import com.example.lkord.movies.ui.toprated.list.MovieAdapter
+import com.example.lkord.movies.ui.toprated.view.Data
+import com.example.lkord.movies.ui.toprated.view.Error
+import com.example.lkord.movies.ui.toprated.view.Loading
+import com.example.lkord.movies.ui.toprated.view.MovieListViewState
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.util.extensions.subscribe

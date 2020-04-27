@@ -1,4 +1,4 @@
-package com.example.lkord.movies.ui.topRated.list
+package com.example.lkord.movies.ui.toprated.list
 
 import android.view.LayoutInflater
 import android.view.View

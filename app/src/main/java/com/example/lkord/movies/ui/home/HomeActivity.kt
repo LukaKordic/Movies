@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.lkord.movies.R
 import com.example.lkord.movies.ui.favourites.view.FavouritesFragment
 import com.example.lkord.movies.ui.popular.view.PopularFragment
-import com.example.lkord.movies.ui.topRated.view.TopRatedFragment
+import com.example.lkord.movies.ui.toprated.view.TopRatedFragment
 import com.example.lkord.movies.util.extensions.onItemTapped
 import com.example.lkord.movies.util.extensions.replace
 import kotlinx.android.synthetic.main.activity_home.*

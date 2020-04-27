@@ -14,7 +14,7 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
-    tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+    tools:ignore="AllowBackup,GoogleAppIndexingWarning,LockedOrientationActivity">
     <activity
       android:name=".ui.home.HomeActivity"
       android:screenOrientation="portrait"
@@ -25,9 +25,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity
-      android:name=".ui.moviedetails.MovieDetailsActivity"
-      android:parentActivityName=".ui.home.HomeActivity" />
+    <activity android:name=".ui.moviedetails.MovieDetailsActivity" />
   </application>
 
 </manifest>

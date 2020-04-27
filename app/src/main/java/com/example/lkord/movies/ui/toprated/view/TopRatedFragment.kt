@@ -1,4 +1,4 @@
-package com.example.lkord.movies.ui.topRated.view
+package com.example.lkord.movies.ui.toprated.view
 
 import android.content.Context
 import android.os.Bundle
@@ -10,7 +10,7 @@ import com.example.lkord.movies.App
 import com.example.lkord.movies.R
 import com.example.lkord.movies.presentation.TopRatedViewModel
 import com.example.lkord.movies.ui.moviedetails.startMovieDetailsActivity
-import com.example.lkord.movies.ui.topRated.list.MovieAdapter
+import com.example.lkord.movies.ui.toprated.list.MovieAdapter
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.util.extensions.subscribe
