@@ -1,4 +1,4 @@
-package com.example.lkord.movies.ui.favourites.holders
+package com.example.lkord.movies.ui.favourites.list
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

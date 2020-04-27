@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/navigationTopRated"
+    android:icon="@drawable/top_rated_movies_white_24dp"
+    android:title="@string/top_rated" />
 
-    <item
-        android:id="@+id/navigationNowPlaying"
-        android:icon="@drawable/ic_now_playing_24dp"
-        android:title="@string/now_playing"/>
+  <item
+    android:id="@+id/navigationPopular"
+    android:icon="@drawable/ic_popular_24dp"
+    android:title="@string/popular" />
 
-    <item
-        android:id="@+id/navigationPopular"
-        android:title="@string/popular"
-        android:icon="@drawable/ic_popular_24dp"/>
+  <item
+    android:id="@+id/navigationFavourites"
+    android:icon="@drawable/ic_favorite_white_24dp"
+    android:title="@string/favourites" />
 
-    <item
-        android:id="@+id/navigationFavourites"
-        android:icon="@drawable/ic_favorite_white_24dp"
-        android:title="@string/favourites" />
-
+  <item
+    android:id="@+id/navigationProfile"
+    android:icon="@drawable/nav_account_white_24dp"
+    android:title="@string/profile" />
 </menu>

@@ -1,4 +1,4 @@
-package com.example.lkord.movies.ui.popular
+package com.example.lkord.movies.ui.popular.view
 
 import android.os.Bundle
 import android.view.View
@@ -7,15 +7,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.domain.model.Movie
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
-import com.example.lkord.movies.ui.nowPlaying.adapters.MovieAdapter
-import com.example.lkord.movies.ui.nowPlaying.view.Data
-import com.example.lkord.movies.ui.nowPlaying.view.Error
-import com.example.lkord.movies.ui.nowPlaying.view.Loading
-import com.example.lkord.movies.ui.nowPlaying.view.MovieListViewState
+import com.example.lkord.movies.presentation.PopularViewModel
+import com.example.lkord.movies.ui.topRated.list.MovieAdapter
+import com.example.lkord.movies.ui.topRated.view.Data
+import com.example.lkord.movies.ui.topRated.view.Error
+import com.example.lkord.movies.ui.topRated.view.Loading
+import com.example.lkord.movies.ui.topRated.view.MovieListViewState
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.util.extensions.subscribe
-import com.example.lkord.movies.viewModels.PopularViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_popular.*
 import javax.inject.Inject

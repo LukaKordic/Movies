@@ -1,6 +1,7 @@
 package com.example.data.repository
 
 import com.example.data.common.Connectivity
+import com.example.data.common.FAVOURITES
 import com.example.data.common.NOW_PLAYING_TYPE
 import com.example.data.common.POPULAR_TYPE
 import com.example.data.database.localstorage.LocalStorage
@@ -32,6 +33,14 @@ class MovieRepositoryImpl @Inject constructor(
       getPopularMoviesFromApi()
     } else {
       Success(localStorage.retrieveMoviesWithType(POPULAR_TYPE))
+    }
+  }
+
+  override suspend fun getFavouriteMovies(): DataResult<List<Movie>> {
+    return try {
+      Success(localStorage.retrieveMoviesWithType(FAVOURITES))
+    } catch (e: Exception) {
+      Failure(Throwable(e))
     }
   }
 

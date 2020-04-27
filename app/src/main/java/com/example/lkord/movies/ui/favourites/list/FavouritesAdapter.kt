@@ -1,11 +1,10 @@
-package com.example.lkord.movies.ui.favourites.adapters
+package com.example.lkord.movies.ui.favourites.list
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.lkord.movies.R
+import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.Movie
-import com.example.lkord.movies.ui.favourites.holders.FavoriteMovieHolder
+import com.example.lkord.movies.R
 
 class FavouritesAdapter : RecyclerView.Adapter<FavoriteMovieHolder>() {
 

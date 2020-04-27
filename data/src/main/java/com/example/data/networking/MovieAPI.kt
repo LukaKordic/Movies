@@ -6,8 +6,8 @@ import retrofit2.http.GET
 
 interface MovieAPI {
 
-  @GET("movie/now_playing")
-  suspend fun getNowPlayingMovies(): Response<MovieResponseWrapper>
+  @GET("movie/top_rated")
+  suspend fun getTopRatedMovies(): Response<MovieResponseWrapper>
 
   @GET("movie/popular")
   suspend fun getPopularMovies(): Response<MovieResponseWrapper>

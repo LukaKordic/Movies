@@ -16,7 +16,7 @@
     app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbarShadow"
+    app:layout_constraintTop_toTopOf="parent"
     tools:ignore="UnknownIdInLayout" />
 
   <com.google.android.material.bottomnavigation.BottomNavigationView

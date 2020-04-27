@@ -8,4 +8,6 @@ interface MovieRepository {
   suspend fun fetchAndSaveNowPlayingMovies(): DataResult<List<Movie>>
 
   suspend fun fetchAndSavePopularMovies(): DataResult<List<Movie>>
+
+  suspend fun getFavouriteMovies(): DataResult<List<Movie>>
 }

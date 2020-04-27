@@ -1,6 +1,7 @@
-package com.example.domain.interaction
+package com.example.domain.interaction.impl
 
 import com.example.domain.common.DataResult
+import com.example.domain.interaction.GetNowPlayingMoviesUseCase
 import com.example.domain.model.Movie
 import com.example.domain.repository.MovieRepository
 import javax.inject.Inject

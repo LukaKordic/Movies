@@ -1,4 +1,4 @@
-package com.example.lkord.movies.ui.nowPlaying.view
+package com.example.lkord.movies.ui.topRated.view
 
 import android.content.Context
 import android.os.Bundle
@@ -8,22 +8,22 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.domain.model.Movie
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
+import com.example.lkord.movies.presentation.TopRatedViewModel
 import com.example.lkord.movies.ui.moviedetails.startMovieDetailsActivity
-import com.example.lkord.movies.ui.nowPlaying.adapters.MovieAdapter
+import com.example.lkord.movies.ui.topRated.list.MovieAdapter
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.util.extensions.subscribe
-import com.example.lkord.movies.viewModels.NowPlayingViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_now_playing.*
 import javax.inject.Inject
 
-class NowPlayingFragment : Fragment(R.layout.fragment_now_playing) {
+class TopRatedFragment : Fragment(R.layout.fragment_now_playing) {
 
   @Inject
   lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  private val viewModel by lazy { getViewModel<NowPlayingViewModel>(viewModelFactory) }
+  private val viewModel by lazy { getViewModel<TopRatedViewModel>(viewModelFactory) }
   private val movieAdapter = MovieAdapter(::onListItemClicked)
 
   override fun onAttach(context: Context) {
@@ -79,6 +79,6 @@ class NowPlayingFragment : Fragment(R.layout.fragment_now_playing) {
   }
 
   companion object {
-    fun newInstance() = NowPlayingFragment()
+    fun newInstance() = TopRatedFragment()
   }
 }

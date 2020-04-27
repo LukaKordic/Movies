@@ -14,4 +14,6 @@
     <string name="now_playing">Now Playing</string>
     <string name="popular_title">Popular</string>
   <string name="search_content_description">Search button</string>
+  <string name="top_rated">Top rated</string>
+  <string name="profile">Profile</string>
 </resources>

@@ -1,12 +1,11 @@
-package com.example.lkord.movies.ui.nowPlaying.adapters
+package com.example.lkord.movies.ui.topRated.list
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.lkord.movies.R
+import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.Movie
-import com.example.lkord.movies.ui.nowPlaying.holders.NowPlayingHolder
+import com.example.lkord.movies.R
 
 class MovieAdapter(private val onItemClick: (Movie) -> Unit) : RecyclerView.Adapter<NowPlayingHolder>() {
 

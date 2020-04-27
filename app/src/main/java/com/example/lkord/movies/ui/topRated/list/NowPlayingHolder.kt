@@ -1,7 +1,7 @@
-package com.example.lkord.movies.ui.nowPlaying.holders
+package com.example.lkord.movies.ui.topRated.list
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.Movie
 import com.example.lkord.movies.util.extensions.loadImage
 import com.example.lkord.movies.util.extensions.onClick
