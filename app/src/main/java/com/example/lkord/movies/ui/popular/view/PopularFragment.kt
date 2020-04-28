@@ -71,6 +71,6 @@ class PopularFragment : Fragment(R.layout.fragment_popular) {
   }
 
   companion object {
-    fun getInstance() = PopularFragment()
+    fun newInstance() = PopularFragment()
   }
 }

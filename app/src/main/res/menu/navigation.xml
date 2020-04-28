@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
-    android:id="@+id/navigationTopRated"
-    android:icon="@drawable/top_rated_movies_white_24dp"
-    android:title="@string/top_rated" />
+    android:id="@+id/navigationMovies"
+    android:icon="@drawable/movies_white_24dp"
+    android:title="@string/movies" />
 
   <item
-    android:id="@+id/navigationPopular"
-    android:icon="@drawable/ic_popular_24dp"
-    android:title="@string/popular" />
+    android:id="@+id/navigationTvShows"
+    android:icon="@drawable/ic_tv_white_24dp"
+    android:title="@string/shows" />
+
+  <item
+    android:id="@+id/navigationSearch"
+    android:icon="@drawable/ic_search_white_24dp"
+    android:title="@string/search" />
 
   <item
     android:id="@+id/navigationFavourites"
