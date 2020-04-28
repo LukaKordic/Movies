@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.domain.model.Movie
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
-import com.example.lkord.movies.presentation.PopularViewModel
+import com.example.lkord.movies.presentation.TvShowsViewModel
 import com.example.lkord.movies.ui.movies.list.MoviesAdapter
 import com.example.lkord.movies.ui.movies.view.Data
 import com.example.lkord.movies.ui.movies.view.Error
@@ -24,7 +24,7 @@ class TvShowsFragment : Fragment(R.layout.fragment_popular) {
 
   @Inject
   lateinit var factory: ViewModelProvider.Factory
-  private val viewModel by lazy { getViewModel<PopularViewModel>(factory) }
+  private val viewModel by lazy { getViewModel<TvShowsViewModel>(factory) }
   private val movieAdapter = MoviesAdapter {}
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

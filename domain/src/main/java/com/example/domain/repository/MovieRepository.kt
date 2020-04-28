@@ -6,8 +6,8 @@ import com.example.domain.model.Movie
 interface MovieRepository {
 
   suspend fun fetchAndSaveNowPlayingMovies(): DataResult<List<Movie>>
-
-  suspend fun fetchAndSavePopularMovies(): DataResult<List<Movie>>
+  
+  suspend fun fetchAndSaveTvShows(): DataResult<List<Movie>>
 
   suspend fun getFavouriteMovies(): DataResult<List<Movie>>
 }

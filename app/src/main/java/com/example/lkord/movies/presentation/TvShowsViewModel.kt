@@ -4,17 +4,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.example.domain.common.onFailure
 import com.example.domain.common.onSuccess
-import com.example.domain.interaction.GetPopularMoviesUseCase
+import com.example.domain.interaction.GetShowsUseCase
 import com.example.lkord.movies.ui.movies.view.Data
 import com.example.lkord.movies.ui.movies.view.Error
 import com.example.lkord.movies.ui.movies.view.Loading
 import javax.inject.Inject
 
-class PopularViewModel @Inject constructor(private val getPopularMoviesUseCase: GetPopularMoviesUseCase) : ViewModel() {
+class TvShowsViewModel @Inject constructor(private val getShowsUseCase: GetShowsUseCase) : ViewModel() {
   
   val popularViewState = liveData {
     emit(Loading)
-    getPopularMoviesUseCase()
+    getShowsUseCase()
         .onSuccess { emit(Data(it)) }
         .onFailure { emit(Error(it)) }
   }

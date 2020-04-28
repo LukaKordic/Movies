@@ -6,8 +6,8 @@ import com.example.lkord.movies.di.DaggerAwareViewModelFactory
 import com.example.lkord.movies.di.ViewModelKey
 import com.example.lkord.movies.di.modules.InteractionModule
 import com.example.lkord.movies.presentation.FavouritesViewModel
-import com.example.lkord.movies.presentation.PopularViewModel
 import com.example.lkord.movies.presentation.MoviesViewModel
+import com.example.lkord.movies.presentation.TvShowsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -25,8 +25,8 @@ internal abstract class ViewModelBuilder {
 
   @Binds
   @IntoMap
-  @ViewModelKey(PopularViewModel::class)
-  internal abstract fun bindPopularViewModel(viewModel: PopularViewModel): ViewModel
+  @ViewModelKey(TvShowsViewModel::class)
+  internal abstract fun bindPopularViewModel(viewModel: TvShowsViewModel): ViewModel
 
   @Binds
   @IntoMap

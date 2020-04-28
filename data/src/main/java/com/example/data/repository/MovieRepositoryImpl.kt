@@ -30,7 +30,7 @@ class MovieRepositoryImpl @Inject constructor(
     }
   }
   
-  override suspend fun fetchAndSavePopularMovies(): DataResult<List<Movie>> {
+  override suspend fun fetchAndSaveTvShows(): DataResult<List<Movie>> {
     return withContext(coroutineContextProvider.io + coroutineExceptionHandler) {
       if (connectivity.hasNetworkAccess()) {
         getPopularMoviesFromApi()
