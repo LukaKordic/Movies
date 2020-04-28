@@ -1,4 +1,4 @@
-package com.example.lkord.movies.ui.toprated.list
+package com.example.lkord.movies.ui.movies.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.model.Movie
 import com.example.lkord.movies.R
 
-class MovieAdapter(private val onItemClick: (Movie) -> Unit) : RecyclerView.Adapter<NowPlayingHolder>() {
+class MoviesAdapter(private val onItemClick: (Movie) -> Unit) : RecyclerView.Adapter<MoviesViewHolder>() {
 
     private val movies = mutableListOf<Movie>()
 
@@ -17,12 +17,12 @@ class MovieAdapter(private val onItemClick: (Movie) -> Unit) : RecyclerView.Adap
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NowPlayingHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
-        return NowPlayingHolder(view, onItemClick)
+        return MoviesViewHolder(view, onItemClick)
     }
 
-    override fun onBindViewHolder(responseHolder: NowPlayingHolder, position: Int) {
+    override fun onBindViewHolder(responseHolder: MoviesViewHolder, position: Int) {
         responseHolder.setMovieData(movies[position])
     }
 

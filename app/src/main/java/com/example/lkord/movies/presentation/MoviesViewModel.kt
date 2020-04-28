@@ -5,12 +5,12 @@ import androidx.lifecycle.liveData
 import com.example.domain.common.onFailure
 import com.example.domain.common.onSuccess
 import com.example.domain.interaction.GetNowPlayingMoviesUseCase
-import com.example.lkord.movies.ui.toprated.view.Data
-import com.example.lkord.movies.ui.toprated.view.Error
-import com.example.lkord.movies.ui.toprated.view.Loading
+import com.example.lkord.movies.ui.movies.view.Data
+import com.example.lkord.movies.ui.movies.view.Error
+import com.example.lkord.movies.ui.movies.view.Loading
 import javax.inject.Inject
 
-class TopRatedViewModel @Inject constructor(
+class MoviesViewModel @Inject constructor(
     private val getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase) : ViewModel() {
   
   val nowPlayingViewState = liveData {

@@ -1,6 +1,5 @@
-package com.example.lkord.movies.ui.toprated.view
+package com.example.lkord.movies.ui.tvshows.view
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -8,33 +7,32 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.domain.model.Movie
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
-import com.example.lkord.movies.presentation.TopRatedViewModel
-import com.example.lkord.movies.ui.moviedetails.startMovieDetailsActivity
-import com.example.lkord.movies.ui.toprated.list.MovieAdapter
+import com.example.lkord.movies.presentation.PopularViewModel
+import com.example.lkord.movies.ui.movies.list.MoviesAdapter
+import com.example.lkord.movies.ui.movies.view.Data
+import com.example.lkord.movies.ui.movies.view.Error
+import com.example.lkord.movies.ui.movies.view.Loading
+import com.example.lkord.movies.ui.movies.view.MovieListViewState
 import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.util.extensions.subscribe
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_now_playing.*
+import kotlinx.android.synthetic.main.fragment_popular.*
 import javax.inject.Inject
 
-class TopRatedFragment : Fragment(R.layout.fragment_now_playing) {
+class TvShowsFragment : Fragment(R.layout.fragment_popular) {
 
   @Inject
-  lateinit var viewModelFactory: ViewModelProvider.Factory
-
-  private val viewModel by lazy { getViewModel<TopRatedViewModel>(viewModelFactory) }
-  private val movieAdapter = MovieAdapter(::onListItemClicked)
-
-  override fun onAttach(context: Context) {
-    super.onAttach(context)
-    App.appComponent.inject(this)
-  }
+  lateinit var factory: ViewModelProvider.Factory
+  private val viewModel by lazy { getViewModel<PopularViewModel>(factory) }
+  private val movieAdapter = MoviesAdapter {}
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
+
     initRecyclerView()
-    viewModel.nowPlayingViewState.subscribe(viewLifecycleOwner, this::onViewStateChanged)
+    App.appComponent.inject(this)
+    viewModel.popularViewState.subscribe(viewLifecycleOwner, this::onViewStateChanged)
   }
 
   private fun initRecyclerView() {
@@ -46,23 +44,12 @@ class TopRatedFragment : Fragment(R.layout.fragment_now_playing) {
     }
   }
 
-  private fun onListItemClicked(movie: Movie) {
-    activity?.let { context ->
-      startMovieDetailsActivity(context, movie)
-    }
-  }
-
   private fun onViewStateChanged(viewState: MovieListViewState) {
     when (viewState) {
       is Data -> handleData(viewState.movies)
       is Error -> showError(viewState.error)
       Loading -> showLoading()
     }
-  }
-
-  private fun handleData(movies: List<Movie>) {
-    hideLoading()
-    movieAdapter.addMovies(movies)
   }
 
   private fun showLoading() {
@@ -73,12 +60,17 @@ class TopRatedFragment : Fragment(R.layout.fragment_now_playing) {
     loadingIndicator.isVisible = false
   }
 
+  private fun handleData(movies: List<Movie>) {
+    hideLoading()
+    movieAdapter.addMovies(movies)
+  }
+
   private fun showError(error: Throwable) {
     hideLoading()
     Snackbar.make(activity?.findViewById(R.id.rootView)!!, error.message ?: "", Snackbar.LENGTH_LONG)
   }
 
   companion object {
-    fun newInstance() = TopRatedFragment()
+    fun newInstance() = TvShowsFragment()
   }
 }

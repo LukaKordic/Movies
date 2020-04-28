@@ -7,7 +7,7 @@ import com.example.lkord.movies.di.ViewModelKey
 import com.example.lkord.movies.di.modules.InteractionModule
 import com.example.lkord.movies.presentation.FavouritesViewModel
 import com.example.lkord.movies.presentation.PopularViewModel
-import com.example.lkord.movies.presentation.TopRatedViewModel
+import com.example.lkord.movies.presentation.MoviesViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -20,8 +20,8 @@ internal abstract class ViewModelBuilder {
 
   @Binds
   @IntoMap
-  @ViewModelKey(TopRatedViewModel::class)
-  internal abstract fun bindMainViewModel(viewModel: TopRatedViewModel): ViewModel
+  @ViewModelKey(MoviesViewModel::class)
+  internal abstract fun bindMainViewModel(viewModel: MoviesViewModel): ViewModel
 
   @Binds
   @IntoMap

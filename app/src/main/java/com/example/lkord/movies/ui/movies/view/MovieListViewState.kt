@@ -1,4 +1,4 @@
-package com.example.lkord.movies.ui.toprated.view
+package com.example.lkord.movies.ui.movies.view
 
 import com.example.domain.model.Movie
 

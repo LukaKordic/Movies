@@ -1,4 +1,4 @@
-package com.example.lkord.movies.ui.toprated.list
+package com.example.lkord.movies.ui.movies.list
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -7,7 +7,7 @@ import com.example.lkord.movies.util.extensions.loadImage
 import com.example.lkord.movies.util.extensions.onClick
 import kotlinx.android.synthetic.main.movie_item.view.*
 
-class NowPlayingHolder(itemView: View, private val onItemClick: (Movie) -> Unit) :
+class MoviesViewHolder(itemView: View, private val onItemClick: (Movie) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
 
     fun setMovieData(movie: Movie) = with(itemView) {

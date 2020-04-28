@@ -4,8 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
-  android:layout_margin="4dp"
-  android:background="@drawable/rounded_item_background">
+  android:layout_margin="4dp">
 
   <ImageView
     android:id="@+id/moviePoster"
@@ -23,7 +22,6 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:textAlignment="center"
-    android:textColor="@color/colorAccent"
     android:textSize="18sp"
     app:layout_constraintBottom_toTopOf="@id/releaseDate"
     app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +32,6 @@
     android:id="@+id/releaseDate"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textColor="@color/colorAccent"
     android:textSize="14sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"

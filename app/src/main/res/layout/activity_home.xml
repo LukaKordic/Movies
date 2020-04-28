@@ -5,14 +5,12 @@
   android:id="@+id/rootView"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/colorPrimary"
   tools:context="com.example.lkord.movies.ui.home.HomeActivity">
 
   <androidx.fragment.app.FragmentContainerView
     android:id="@+id/container"
     android:layout_width="0dp"
     android:layout_height="0dp"
-    android:background="@color/colorPrimary"
     app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -23,9 +21,9 @@
     android:id="@+id/bottomNavigation"
     android:layout_width="0dp"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimaryDark"
-    app:itemIconTint="@color/colorAccent"
-    app:itemTextColor="@color/colorAccent"
+    app:itemIconTint="?colorOnPrimary"
+    app:itemTextColor="?colorOnPrimary"
+    android:background="?colorPrimary"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
