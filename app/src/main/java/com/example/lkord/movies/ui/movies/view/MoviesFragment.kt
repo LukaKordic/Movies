@@ -15,10 +15,10 @@ import com.example.lkord.movies.util.extensions.getViewModel
 import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.util.extensions.subscribe
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_now_playing.*
+import kotlinx.android.synthetic.main.fragment_movies.*
 import javax.inject.Inject
 
-class MoviesFragment : Fragment(R.layout.fragment_now_playing) {
+class MoviesFragment : Fragment(R.layout.fragment_movies) {
 
   @Inject
   lateinit var viewModelFactory: ViewModelProvider.Factory

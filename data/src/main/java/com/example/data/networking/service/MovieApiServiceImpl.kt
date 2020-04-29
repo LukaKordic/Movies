@@ -8,9 +8,9 @@ import com.example.domain.common.Success
 import javax.inject.Inject
 
 class MovieApiServiceImpl @Inject constructor(private val movieApi: MovieAPI) : MovieApiService {
-
-  override suspend fun getNowPlayingMovies(): DataResult<MovieResponseWrapper> {
-    movieApi.getTopRatedMovies().run {
+  
+  override suspend fun getPopularShows(): DataResult<MovieResponseWrapper> {
+    movieApi.getPopularShows().run {
       body()?.let { return Success(it) }
       errorBody()?.let { return Failure(Throwable(message())) }
     }

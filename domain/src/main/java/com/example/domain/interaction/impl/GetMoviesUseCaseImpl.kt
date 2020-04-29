@@ -9,6 +9,6 @@ import javax.inject.Inject
 class GetMoviesUseCaseImpl @Inject constructor(
     private val repository: MovieRepository) : GetMoviesUseCase {
   override suspend operator fun invoke(): DataResult<List<Movie>> {
-    return repository.fetchAndSaveNowPlayingMovies()
+    return repository.fetchAndSavePopularMovies()
   }
 }

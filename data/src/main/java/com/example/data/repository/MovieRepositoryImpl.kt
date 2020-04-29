@@ -20,17 +20,17 @@ class MovieRepositoryImpl @Inject constructor(
     private val coroutineContextProvider: CoroutineContextProvider,
     private val coroutineExceptionHandler: CoroutineExceptionHandler) : MovieRepository {
   
-  override suspend fun fetchAndSaveNowPlayingMovies(): DataResult<List<Movie>> {
+  override suspend fun fetchAndSavePopularShows(): DataResult<List<Movie>> {
     return withContext(coroutineContextProvider.io + coroutineExceptionHandler) {
       if (connectivity.hasNetworkAccess()) {
-        getNowPlayingMoviesFromApi()
+        getPopularShowsFromApi()
       } else {
         Success(localStorage.retrieveMoviesWithType(NOW_PLAYING_TYPE))
       }
     }
   }
   
-  override suspend fun fetchAndSaveTvShows(): DataResult<List<Movie>> {
+  override suspend fun fetchAndSavePopularMovies(): DataResult<List<Movie>> {
     return withContext(coroutineContextProvider.io + coroutineExceptionHandler) {
       if (connectivity.hasNetworkAccess()) {
         getPopularMoviesFromApi()
@@ -62,8 +62,8 @@ class MovieRepositoryImpl @Inject constructor(
     return Failure(Throwable())
   }
   
-  private suspend fun getNowPlayingMoviesFromApi(): DataResult<List<Movie>> {
-    movieApiService.getNowPlayingMovies().onSuccess {
+  private suspend fun getPopularShowsFromApi(): DataResult<List<Movie>> {
+    movieApiService.getPopularShows().onSuccess {
       localStorage.storeMovies(it.movies.map { movieResponse ->
         movieResponse.mapToDbEntity().also { movieEntity -> movieEntity.movieType = NOW_PLAYING_TYPE }
       })

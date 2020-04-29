@@ -8,6 +8,6 @@ import javax.inject.Inject
 
 class GetShowsUseCaseImpl @Inject constructor(private val repository: MovieRepository) : GetShowsUseCase {
   override suspend operator fun invoke(): DataResult<List<Movie>> {
-    return repository.fetchAndSaveTvShows()
+    return repository.fetchAndSavePopularShows()
   }
 }
