@@ -1,13 +1,14 @@
 package com.example.lkord.movies.ui.home
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lkord.movies.R
 import com.example.lkord.movies.ui.favourites.view.FavouritesFragment
-import com.example.lkord.movies.ui.tvshows.view.TvShowsFragment
+import com.example.lkord.movies.ui.movies.view.MoviesFragment
 import com.example.lkord.movies.ui.profile.ProfileFragment
 import com.example.lkord.movies.ui.search.SearchFragment
-import com.example.lkord.movies.ui.movies.view.MoviesFragment
+import com.example.lkord.movies.ui.tvshows.view.TvShowsFragment
 import com.example.lkord.movies.util.extensions.onItemTapped
 import com.example.lkord.movies.util.extensions.replace
 import kotlinx.android.synthetic.main.activity_home.*
@@ -19,6 +20,7 @@ class HomeActivity : AppCompatActivity() {
     setContentView(R.layout.activity_home)
     initBottomNavigation()
     startMoviesFragment()
+    drawBehindStatusBar()
   }
   
   private fun initBottomNavigation() {
@@ -51,5 +53,9 @@ class HomeActivity : AppCompatActivity() {
   
   private fun startProfileFragment() {
     supportFragmentManager.replace(R.id.container, ProfileFragment.newInstance())
+  }
+  
+  private fun drawBehindStatusBar() {
+    rootView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
   }
 }
