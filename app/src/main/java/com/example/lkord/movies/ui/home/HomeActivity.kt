@@ -26,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
   private fun initBottomNavigation() {
     bottomNavigation.onItemTapped {
       when (it) {
+        // TODO: 11/05/2020 handle item reselection
         R.id.navigationMovies -> startMoviesFragment()
         R.id.navigationTvShows -> startTvShowsFragment()
         R.id.navigationSearch -> startSearchFragment()

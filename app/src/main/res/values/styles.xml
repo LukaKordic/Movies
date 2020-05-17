@@ -1,13 +1,9 @@
 <resources>
-
-  <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/dark_gray</item>
-    <item name="colorSecondary">@color/pure_white</item>
-    <item name="colorOnPrimary">@color/pure_white</item>
-    <item name="android:windowBackground">@color/gray_900</item>
-    <item name="android:statusBarColor">@android:color/transparent</item>
+  <!--Define only widget styles here-->
+  <style name="ExampleButtonStyle">
+    <item name="textAllCaps">false</item>
+    <item name="android:layout_margin">@dimen/defaultMargin</item>
+    <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Button</item>
+    <item name="android:layout_gravity">bottom|center</item>
   </style>
-
 </resources>

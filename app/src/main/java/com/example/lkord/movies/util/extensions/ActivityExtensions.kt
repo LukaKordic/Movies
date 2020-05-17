@@ -1,15 +1,36 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package com.example.lkord.movies.util.extensions
 
+import android.app.Activity
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
+import androidx.activity.viewModels
+import androidx.fragment.app.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.lkord.movies.App
 
-inline fun <reified T : ViewModel> Fragment.getViewModel(factory: ViewModelProvider.Factory): T {
-  return ViewModelProvider(this, factory).get(T::class.java)
-}
+@Suppress("UNCHECKED_CAST")
+inline fun <reified T : ViewModel> FragmentActivity.viewModel(crossinline provider: () -> T) =
+    viewModels<T> {
+      object : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>) = provider() as T
+      }
+    }
+
+inline fun <reified T : ViewModel> Fragment.viewModel(crossinline provider: () -> T) =
+    viewModels<T> {
+      object : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>) = provider() as T
+      }
+    }
+
+inline fun <reified T : ViewModel> Fragment.activityViewModel(crossinline provider: () -> T) =
+    activityViewModels<T> {
+      object : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>) = provider() as T
+      }
+    }
 
 fun FragmentActivity.toast(message: String) {
   Toast.makeText(this, message, Toast.LENGTH_LONG).show()

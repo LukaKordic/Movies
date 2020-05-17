@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="full_black">#000000</color>
-  <color name="pure_white">#FFFFFF</color>
-  <color name="light_gray">#4f5b62</color>
-  <color name="gray_900">#212121</color>
-  <color name="dark_gray">#111111</color>
+  <color name="fullBlack">#000000</color>
+  <color name="pureWhite">#FFFFFF</color>
+  <color name="lightGray">#4f5b62</color>
+  <color name="gray900">#212121</color>
+  <color name="darkGray">#111111</color>
 </resources>

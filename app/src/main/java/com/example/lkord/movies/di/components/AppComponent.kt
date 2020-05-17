@@ -1,31 +1,22 @@
 package com.example.lkord.movies.di.components
 
 import android.content.Context
-import com.example.lkord.movies.di.modules.AppModule
-import com.example.lkord.movies.di.modules.builders.ViewModelBuilder
-import com.example.lkord.movies.ui.favourites.view.FavouritesFragment
-import com.example.lkord.movies.ui.home.HomeActivity
-import com.example.lkord.movies.ui.moviedetails.MovieDetailsActivity
-import com.example.lkord.movies.ui.tvshows.view.TvShowsFragment
-import com.example.lkord.movies.ui.movies.view.MoviesFragment
+import com.example.lkord.movies.di.modules.InteractionModule
+import com.example.lkord.movies.presentation.FavouritesViewModel
+import com.example.lkord.movies.presentation.MoviesViewModel
+import com.example.lkord.movies.presentation.TvShowsViewModel
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AppModule::class, ViewModelBuilder::class])
+@Component(modules = [InteractionModule::class])
 interface AppComponent {
-
-  fun inject(homeActivity: HomeActivity)
-
-  fun inject(movieDetailsActivity: MovieDetailsActivity)
-
-  fun inject(moviesFragment: MoviesFragment)
-
-  fun inject(tvShowsFragment: TvShowsFragment)
-
-  fun inject(favouritesFragment: FavouritesFragment)
-
+  
+  val moviesViewModel: MoviesViewModel
+  val tvShowsViewModel: TvShowsViewModel
+  val favouritesViewModel: FavouritesViewModel
+  
   @Component.Factory
   interface Factory {
     fun create(@BindsInstance context: Context): AppComponent

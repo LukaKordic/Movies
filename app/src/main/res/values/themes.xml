@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Top level application theme to be set in AndroidManifest.xml -->
+  <style name="Theme.MovieApp" parent="Base.Theme.MovieApp" />
+
+  <!--  Base theme to share between different variants.-->
+  <!--  This theme is dark by default-->
+  <style name="Base.Theme.MovieApp" parent="Theme.MaterialComponents.NoActionBar">
+    <item name="colorPrimary">@color/darkGray</item>
+    <item name="android:windowLightNavigationBar">true</item>
+    <item name="colorSecondary">@color/pureWhite</item>
+    <item name="colorOnPrimary">@color/pureWhite</item>
+    <item name="android:colorBackground">@color/pureWhite</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:windowBackground">@color/darkGray</item>
+  </style>
+</resources>
