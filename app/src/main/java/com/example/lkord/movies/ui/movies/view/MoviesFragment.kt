@@ -1,14 +1,17 @@
 package com.example.lkord.movies.ui.movies.view
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.domain.model.Movie
-import com.example.lkord.movies.App
 import com.example.lkord.movies.R
+import com.example.lkord.movies.ui.Data
+import com.example.lkord.movies.ui.Error
+import com.example.lkord.movies.ui.Loading
+import com.example.lkord.movies.ui.ViewState
 import com.example.lkord.movies.ui.moviedetails.startMovieDetailsActivity
 import com.example.lkord.movies.ui.movies.list.MoviesAdapter
+import com.example.lkord.movies.util.extensions.injector
 import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.util.extensions.subscribe
 import com.example.lkord.movies.util.extensions.viewModel
@@ -17,13 +20,13 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 
 class MoviesFragment : Fragment(R.layout.fragment_movies) {
   
-  private val viewModel by viewModel { App.appComponent.moviesViewModel }
+  private val viewModel by viewModel { injector.moviesViewModel }
   private val movieAdapter = MoviesAdapter(::onListItemClicked)
   
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     initRecyclerView()
-    viewModel.nowPlayingViewState.subscribe(viewLifecycleOwner, this::onViewStateChanged)
+    viewModel.moviesViewState.subscribe(viewLifecycleOwner, this::onViewStateChanged)
   }
   
   private fun initRecyclerView() {
@@ -41,9 +44,9 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
     }
   }
   
-  private fun onViewStateChanged(viewState: MovieListViewState) {
+  private fun onViewStateChanged(viewState: ViewState<List<Movie>>) {
     when (viewState) {
-      is Data -> handleData(viewState.movies)
+      is Data -> handleData(viewState.data)
       is Error -> showError(viewState.error)
       Loading -> showLoading()
     }

@@ -5,15 +5,15 @@ import androidx.lifecycle.liveData
 import com.example.domain.common.onFailure
 import com.example.domain.common.onSuccess
 import com.example.domain.interaction.GetMoviesUseCase
-import com.example.lkord.movies.ui.movies.view.Data
-import com.example.lkord.movies.ui.movies.view.Error
-import com.example.lkord.movies.ui.movies.view.Loading
+import com.example.lkord.movies.ui.Data
+import com.example.lkord.movies.ui.Error
+import com.example.lkord.movies.ui.Loading
 import javax.inject.Inject
 
 class MoviesViewModel @Inject constructor(
     private val getMoviesUseCase: GetMoviesUseCase) : ViewModel() {
   
-  val nowPlayingViewState = liveData {
+  val moviesViewState = liveData {
     emit(Loading)
     getMoviesUseCase()
         .onSuccess { emit(Data(it)) }

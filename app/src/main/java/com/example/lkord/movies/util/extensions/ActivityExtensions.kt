@@ -2,7 +2,6 @@
 
 package com.example.lkord.movies.util.extensions
 
-import android.app.Activity
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.*
@@ -10,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.lkord.movies.App
 
-@Suppress("UNCHECKED_CAST")
 inline fun <reified T : ViewModel> FragmentActivity.viewModel(crossinline provider: () -> T) =
     viewModels<T> {
       object : ViewModelProvider.Factory {
@@ -31,6 +29,8 @@ inline fun <reified T : ViewModel> Fragment.activityViewModel(crossinline provid
         override fun <T : ViewModel?> create(modelClass: Class<T>) = provider() as T
       }
     }
+
+val Fragment.injector get() = App.appComponent
 
 fun FragmentActivity.toast(message: String) {
   Toast.makeText(this, message, Toast.LENGTH_LONG).show()
