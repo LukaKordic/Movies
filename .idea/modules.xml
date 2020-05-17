@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Movies.iml" filepath="$PROJECT_DIR$/Movies.iml" group="Movies" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Movies/app" />
-      <module fileurl="file://$PROJECT_DIR$/data/data.iml" filepath="$PROJECT_DIR$/data/data.iml" group="Movies/data" />
-      <module fileurl="file://$PROJECT_DIR$/domain/domain.iml" filepath="$PROJECT_DIR$/domain/domain.iml" group="Movies/domain" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Movies.iml" filepath="$PROJECT_DIR$/.idea/Movies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Movies.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Movies.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/Movies.data.iml" filepath="$PROJECT_DIR$/.idea/modules/data/Movies.data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/Movies.domain.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/Movies.domain.iml" />
     </modules>
   </component>
 </project>
