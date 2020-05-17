@@ -12,25 +12,30 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-class NetworkingModule {
-
+object NetworkingModule {
+  
   @Singleton
   @Provides
+  @JvmStatic
   fun baseUrl(): String = BASE_URL
-
+  
   @Singleton
   @Provides
+  @JvmStatic
   fun converterFactory(): GsonConverterFactory = GsonConverterFactory.create()
 
   @Singleton
   @Provides
+  @JvmStatic
   fun httpLoggingInterceptor(): HttpLoggingInterceptor {
     return HttpLoggingInterceptor().apply {
       level = HttpLoggingInterceptor.Level.HEADERS
     }
   }
-
+  
+  @Singleton
   @Provides
+  @JvmStatic
   fun authenticationInterceptor() = Interceptor {
     val request = it.request().newBuilder().apply {
       addHeader(KEY_AUTHORIZATION, "Bearer ${BuildConfig.TMDB_API_TOKEN}")
@@ -40,6 +45,7 @@ class NetworkingModule {
 
   @Singleton
   @Provides
+  @JvmStatic
   fun okhttpClient(httpLoggingInterceptor: HttpLoggingInterceptor, authInterceptor: Interceptor): OkHttpClient {
     return OkHttpClient.Builder().apply {
       if (BuildConfig.DEBUG) addInterceptor(httpLoggingInterceptor)
@@ -49,6 +55,7 @@ class NetworkingModule {
 
   @Singleton
   @Provides
+  @JvmStatic
   fun retrofit(baseUrl: String, client: OkHttpClient, converterFactory: GsonConverterFactory): Retrofit =
       Retrofit.Builder().apply {
         client(client)
@@ -58,6 +65,7 @@ class NetworkingModule {
 
   @Singleton
   @Provides
+  @JvmStatic
   fun apiService(retrofit: Retrofit): MovieAPI = retrofit.create(MovieAPI::class.java)
 }
 
