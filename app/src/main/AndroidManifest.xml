@@ -15,8 +15,7 @@
     android:supportsRtl="true"
     android:theme="@style/Theme.MovieApp"
     tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-    <activity android:name=".ui.home.HomeActivity"
-      android:screenOrientation="portrait">
+    <activity android:name=".ui.home.HomeActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

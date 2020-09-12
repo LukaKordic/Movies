@@ -112,6 +112,9 @@ dependencies {
 
   //fragment
   implementation "androidx.fragment:fragment-ktx:$fragmentKtx"
+
+  //experimental a11y from filip
+  implementation 'com.filbabic.a11y:a11y:0.7.6'
 }
 
 apply plugin: 'com.google.gms.google-services'

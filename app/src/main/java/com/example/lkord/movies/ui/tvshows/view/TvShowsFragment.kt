@@ -6,11 +6,11 @@ import androidx.fragment.app.Fragment
 import com.example.domain.model.Movie
 import com.example.lkord.movies.App
 import com.example.lkord.movies.R
+import com.example.lkord.movies.ui.Data
+import com.example.lkord.movies.ui.Error
+import com.example.lkord.movies.ui.Loading
+import com.example.lkord.movies.ui.ViewState
 import com.example.lkord.movies.ui.movies.list.MoviesAdapter
-import com.example.lkord.movies.ui.movies.view.Data
-import com.example.lkord.movies.ui.movies.view.Error
-import com.example.lkord.movies.ui.movies.view.Loading
-import com.example.lkord.movies.ui.movies.view.MovieListViewState
 import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.util.extensions.subscribe
 import com.example.lkord.movies.util.extensions.viewModel
@@ -38,9 +38,9 @@ class TvShowsFragment : Fragment(R.layout.fragment_shows) {
     }
   }
   
-  private fun onViewStateChanged(viewState: MovieListViewState) {
+  private fun onViewStateChanged(viewState: ViewState<List<Movie>>) {
     when (viewState) {
-      is Data -> handleData(viewState.movies)
+      is Data -> handleData(viewState.data)
       is Error -> showError(viewState.error)
       Loading -> showLoading()
     }
