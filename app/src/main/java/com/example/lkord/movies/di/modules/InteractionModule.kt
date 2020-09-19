@@ -8,8 +8,11 @@ import com.example.domain.interaction.impl.GetMoviesUseCaseImpl
 import com.example.domain.interaction.impl.GetShowsUseCaseImpl
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityRetainedComponent
 
-@Module(includes = [RepositoryModule::class])
+@Module
+@InstallIn(ActivityRetainedComponent::class)
 abstract class InteractionModule {
 
   @Binds

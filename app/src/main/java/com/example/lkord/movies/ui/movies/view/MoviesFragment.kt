@@ -3,24 +3,26 @@ package com.example.lkord.movies.ui.movies.view
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.domain.model.Movie
 import com.example.lkord.movies.R
+import com.example.lkord.movies.presentation.MoviesViewModel
 import com.example.lkord.movies.ui.Data
 import com.example.lkord.movies.ui.Error
 import com.example.lkord.movies.ui.Loading
 import com.example.lkord.movies.ui.ViewState
 import com.example.lkord.movies.ui.moviedetails.startMovieDetailsActivity
 import com.example.lkord.movies.ui.movies.list.MoviesAdapter
-import com.example.lkord.movies.util.extensions.injector
 import com.example.lkord.movies.util.extensions.isVisible
 import com.example.lkord.movies.util.extensions.subscribe
-import com.example.lkord.movies.util.extensions.viewModel
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies.*
 
+@AndroidEntryPoint
 class MoviesFragment : Fragment(R.layout.fragment_movies) {
   
-  private val viewModel by viewModel { injector.moviesViewModel }
+  private val viewModel: MoviesViewModel by viewModels()
   private val movieAdapter = MoviesAdapter(::onListItemClicked)
   
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,7 +69,7 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
   
   private fun showError(error: Throwable) {
     hideLoading()
-    Snackbar.make(activity?.findViewById(R.id.rootView)!!, error.message ?: "", Snackbar.LENGTH_LONG)
+    Snackbar.make(activity?.findViewById(R.id.rootView)!!, error.message ?: "", Snackbar.LENGTH_LONG).show()
   }
   
   companion object {

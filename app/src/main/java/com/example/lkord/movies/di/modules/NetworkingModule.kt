@@ -1,9 +1,12 @@
 package com.example.lkord.movies.di.modules
 
+import android.annotation.SuppressLint
 import com.example.data.networking.MovieAPI
 import com.example.lkord.movies.BuildConfig
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,7 +14,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+@SuppressLint("JvmStaticProvidesInObjectDetector")
+//If every method is static then compiler doesn't have to generate an instance of DatabaseModule (just a small optimization)
 @Module
+@InstallIn(ApplicationComponent::class)
 object NetworkingModule {
   
   @Singleton
@@ -23,7 +29,7 @@ object NetworkingModule {
   @Provides
   @JvmStatic
   fun converterFactory(): GsonConverterFactory = GsonConverterFactory.create()
-
+  
   @Singleton
   @Provides
   @JvmStatic
@@ -42,7 +48,7 @@ object NetworkingModule {
     }.build()
     it.proceed(request)
   }
-
+  
   @Singleton
   @Provides
   @JvmStatic
@@ -52,17 +58,17 @@ object NetworkingModule {
       addNetworkInterceptor(authInterceptor)
     }.build()
   }
-
+  
   @Singleton
   @Provides
   @JvmStatic
   fun retrofit(baseUrl: String, client: OkHttpClient, converterFactory: GsonConverterFactory): Retrofit =
-      Retrofit.Builder().apply {
-        client(client)
-        baseUrl(baseUrl)
-        addConverterFactory(converterFactory)
-      }.build()
-
+    Retrofit.Builder().apply {
+      client(client)
+      baseUrl(baseUrl)
+      addConverterFactory(converterFactory)
+    }.build()
+  
   @Singleton
   @Provides
   @JvmStatic
