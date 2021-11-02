@@ -11,8 +11,10 @@ import com.example.lkord.movies.ui.search.SearchFragment
 import com.example.lkord.movies.ui.tvshows.view.TvShowsFragment
 import com.example.lkord.movies.util.extensions.onItemTapped
 import com.example.lkord.movies.util.extensions.replace
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_home.*
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
   
   override fun onCreate(savedInstanceState: Bundle?) {
